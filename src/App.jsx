@@ -171,7 +171,7 @@ const App = () => {
               </button>
             ))}
             <a 
-              href="https://github.com" 
+              href="https://github.com/roellumauagjr" 
               target="_blank" 
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-6 py-3 bg-[#121212] text-white rounded-full hover:bg-red-600 transition-all duration-300 shadow-lg shadow-[#121212]/20 hover:shadow-red-600/30 hover:-translate-y-0.5"
@@ -209,7 +209,7 @@ const App = () => {
             © {new Date().getFullYear()} Crafted with intent.
           </p>
           <div className="flex space-x-6">
-            <a href="#" className="p-3 bg-[#121212]/5 rounded-full text-[#121212] hover:bg-[#121212] hover:text-white hover:-translate-y-1 transition-all duration-300"><Github size={20} /></a>
+            <a href="https://github.com/roellumauagjr" target="_blank" rel="noopener noreferrer" className="p-3 bg-[#121212]/5 rounded-full text-[#121212] hover:bg-[#121212] hover:text-white hover:-translate-y-1 transition-all duration-300"><Github size={20} /></a>
             <a href="#" className="p-3 bg-red-600/10 rounded-full text-red-600 hover:bg-red-600 hover:text-white hover:-translate-y-1 transition-all duration-300"><Mail size={20} /></a>
           </div>
         </div>
