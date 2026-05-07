@@ -327,7 +327,8 @@ const HomeView = ({ setActiveTab }) => (
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </button>
             <a 
-              href="#"
+              href="LUMAUAG_RESUME.pdf"
+              download="LUMAUAG_RESUME.pdf"
               className="px-8 py-4 bg-white/60 backdrop-blur-md text-[#121212] border border-white font-bold tracking-wide rounded-full hover:bg-[#121212] hover:text-white transition-all duration-300 flex items-center gap-2 shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:-translate-y-1"
             >
               RESUME <Download size={18} />
