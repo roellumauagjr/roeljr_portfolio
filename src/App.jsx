@@ -340,7 +340,7 @@ const HomeView = ({ setActiveTab }) => (
           {/* HERO IMAGE CONTAINER */}
           <div className="relative aspect-square md:aspect-[4/5] bg-white/80 backdrop-blur-xl border-8 border-white shadow-2xl rounded-[3rem] md:rounded-[4rem] overflow-hidden z-10 transition-transform duration-700 group-hover:-translate-y-2">
             <img 
-              src="ROEL ID PICTURE.jpg" 
+              src="ROEL ID PICTURE.png" 
               alt="Roel Jr." 
               className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700"
               onError={(e) => {
@@ -515,7 +515,7 @@ const AboutView = () => (
         <div className="absolute inset-0 bg-[#121212]/10 translate-x-4 translate-y-4 rounded-[3rem] blur-xl group-hover:bg-red-600/20 transition-all duration-700 z-0 animate-float"></div>
         <div className="relative aspect-square md:aspect-[4/5] bg-white border-8 border-white/80 shadow-xl rounded-[3rem] overflow-hidden z-10 transition-transform duration-700">
           <img 
-            src="ROEL ID PICTURE.jpg" 
+            src="ROEL ID PICTURE.png" 
             alt="Roel Jr." 
             className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700"
             onError={(e) => {
