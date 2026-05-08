@@ -1,16 +1,36 @@
-# React + Vite
+# Roel Jr. | Creative Technologist Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A highly polished, responsive personal portfolio built with **React**, **Vite**, and **Tailwind CSS**. This project showcases my journey as a multidisciplinary creative technologist, bridging the gap between code and design.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Modern UI/UX:** Sleek, glassmorphic design with a custom red/charcoal color palette.
+- **Dynamic Animations:** Custom scroll reveals and floating background elements.
+- **Responsive Layout:** Optimized for all screen sizes, from mobile to ultra-wide displays.
+- **Multi-disciplinary Sections:**
+  - **Projects:** Showcasing web applications and game development (Unity/C#).
+  - **Artworks:** A gallery of photography, video, and layout designs.
+  - **Certifications:** Professional validation in UX design, cybersecurity, and IT.
+  - **About Me:** Insights into my background in Computer Science, student leadership, and journalism.
 
-## React Compiler
+## 🛠️ Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Framework:** React 19 (Vite)
+- **Styling:** Tailwind CSS 4
+- **Icons:** Lucide React
+- **Fonts:** Plus Jakarta Sans
 
-## Expanding the ESLint configuration
+## 📂 Project Structure
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- `src/App.jsx`: Main application component containing all views and logic.
+- `src/index.css`: Tailwind CSS entry point.
+- `public/`: Static assets (Resume, ID Picture, Icons).
+
+## 🧑‍💻 Author
+
+**Roel Jr.**
+- GitHub: [@roellumauagjr](https://github.com/roellumauagjr)
+- Specialty: Front-end Development, UI/UX Design, Game Dev.
+
+---
+*Crafted with intent.*
