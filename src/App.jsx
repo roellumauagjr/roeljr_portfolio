@@ -150,7 +150,12 @@ const SectionHeader = ({ title, subtitle, icon }) => (
 const App = () => {
   const [activeTab, setActiveTab] = useState('HOME');
   const [showOpening, setShowOpening] = useState(true);
+  const [isSwitchOn, setIsSwitchOn] = useState(false);
   const navLinks = ['HOME', 'PROJECTS', 'ARTWORKS', 'CERTIFICATIONS', 'ABOUT ME'];
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [activeTab]);
 
   return (
     <SmoothScroll>
@@ -165,6 +170,10 @@ const App = () => {
           @keyframes float {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
             50% { transform: translateY(-30px) rotate(3deg) scale(1.02); }
+          }
+          @keyframes revealUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to   { opacity: 1; transform: translateY(0px); }
           }
         `}</style>
 
@@ -207,12 +216,27 @@ const App = () => {
               ))}
             </div>
 
-            <Magnetic strength={0.3}>
-              <a href="https://github.com/roellumauagjr" target="_blank" rel="noopener noreferrer" 
-                 className="hidden md:flex items-center gap-2 px-6 py-3 bg-[#121212] text-white rounded-full hover:bg-red-600 transition-all duration-300 shadow-lg">
-                <Github size={16} /> GITHUB
-              </a>
-            </Magnetic>
+            <div className="hidden md:flex items-center gap-4">
+              <Magnetic strength={0.3}>
+                <a href="https://github.com/roellumauagjr" target="_blank" rel="noopener noreferrer" 
+                   className="flex items-center gap-2 px-6 py-3 bg-[#121212] text-white rounded-full hover:bg-red-600 transition-all duration-300 shadow-lg">
+                  <Github size={16} /> GITHUB
+                </a>
+              </Magnetic>
+
+              <Magnetic strength={0.2}>
+                <button 
+                  onClick={() => setIsSwitchOn(!isSwitchOn)}
+                  className={`relative w-24 h-[44px] rounded-full transition-all duration-500 flex items-center p-1.5 shadow-lg ${isSwitchOn ? 'bg-green-500' : 'bg-[#121212]/10'}`}
+                >
+                  <motion.div 
+                    animate={{ x: isSwitchOn ? 52 : 0 }}
+                    transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                    className="w-8 h-8 bg-white rounded-full shadow-md"
+                  />
+                </button>
+              </Magnetic>
+            </div>
           </div>
         </nav>
 
@@ -247,13 +271,13 @@ const App = () => {
             )}
             {/* Placeholder for others */}
             {['ARTWORKS', 'CERTIFICATIONS'].includes(activeTab) && (
-              <motion.div 
-                key="fallback"
-                initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                className="flex items-center justify-center h-[50vh] text-4xl font-black uppercase opacity-20"
+              <div 
+                key={activeTab}
+                style={{ animation: 'revealUp 0.6s cubic-bezier(0.21, 0.47, 0.32, 0.98) both' }}
+                className="flex items-center justify-center h-[50vh] text-4xl font-black uppercase text-[#121212]/20"
               >
                 {activeTab} VIEW COMING SOON
-              </motion.div>
+              </div>
             )}
           </AnimatePresence>
         </main>

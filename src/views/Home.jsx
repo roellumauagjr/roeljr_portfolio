@@ -5,16 +5,15 @@ import TiltCard from '../components/animation/TiltCard';
 import TextReveal from '../components/animation/TextReveal';
 import Magnetic from '../components/animation/Magnetic';
 
-// Reusable ScrollReveal (now using Framer Motion)
+// Reusable ScrollReveal — uses CSS animation to avoid 3D stacking context conflicts
 export const ScrollReveal = ({ children, delay = 0 }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 30 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: "-50px" }}
-    transition={{ duration: 0.8, delay, ease: [0.21, 0.47, 0.32, 0.98] }}
+  <div
+    style={{
+      animation: `revealUp 0.8s cubic-bezier(0.21, 0.47, 0.32, 0.98) ${delay}s both`,
+    }}
   >
     {children}
-  </motion.div>
+  </div>
 );
 
 const HomeView = ({ setActiveTab, PROJECTS, ARTWORKS, CERTS, ProjectCard, ArtworksView, CertCard }) => {
