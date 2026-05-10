@@ -12,6 +12,7 @@ import Background from './components/animation/Background';
 import HomeView, { ScrollReveal } from './views/Home';
 import ProjectsView from './views/Projects';
 import AboutView from './views/About';
+import ArtworksView from './views/Artworks';
 import TiltCard from './components/animation/TiltCard';
 import Magnetic from './components/animation/Magnetic';
 import TextReveal from './components/animation/TextReveal';
@@ -27,10 +28,20 @@ const Github = (props) => (
 
 // --- SHARED DATA ---
 const PROJECTS = [
-  { title: 'The Spectrum', category: 'Web App / UI', desc: 'Lead front-end development for a modern platform using React and advanced CSS.', color: 'bg-[#121212]' },
-  { title: 'AHON Game', category: 'Game Dev', desc: 'Interactive puzzle game exploring environmental themes with complex logic.', color: 'bg-red-600' },
-  { title: 'Build A Bot', category: 'AI / OpenCV', desc: 'Computer vision application tracking hand gestures for virtual building.', color: 'bg-[#121212]' },
-  { title: 'Portfolio V1', category: 'UI/UX', desc: 'Initial concept and design system for personal branding.', color: 'bg-red-600' }
+  { 
+    title: 'LCC Press', 
+    category: 'UI/UX Design', 
+    desc: 'Digital system streamlining local printing press operations, providing an efficient platform for managing business receipt orders.', 
+    image: 'LCCPRESS.png',
+    link: 'https://www.figma.com/design/7bFpqw8EWDEfEnGnFfssuv/LCC-Press?t=BPb1tdP6D3GF6jSX-1'
+  },
+  { 
+    title: 'Ahmoree Productions', 
+    category: 'UI/UX Design', 
+    desc: 'Comprehensive UI/UX design for a Dutch content creator, featuring responsive desktop and mobile layouts across multiple site pages.', 
+    image: 'AHMOREE_PRODUCTIONS.png',
+    link: 'https://www.figma.com/design/eoCMB5QWDHKW60tIxSeMoF/Ahmoree-Productions?node-id=0-1&t=2iqZFBAIyiirLyXx-1'
+  }
 ];
 
 const CERTS = [
@@ -40,16 +51,23 @@ const CERTS = [
 ];
 
 const ARTWORKS = {
-  Photography: [
+  PHOTOS: [
+    { 
+      title: 'USLS 69th Graduation Rites', 
+      type: 'Photography', 
+      icon: Camera,
+      image: 'USLS69THGraduationRites.jpg',
+      link: 'https://www.facebook.com/share/p/1ECnSDSLkr/'
+    },
     { title: 'Urban Solitude', type: 'Street', icon: Camera },
     { title: 'Neon Reflections', type: 'Night', icon: Camera },
     { title: 'Golden Hour Stills', type: 'Portrait', icon: Camera }
   ],
-  Video: [
+  VIDEOS: [
     { title: 'Nature in Motion', type: 'Short Film', icon: Video },
     { title: 'Event Highlights 2023', type: 'Recap', icon: Video }
   ],
-  Layout: [
+  'GRAPHIC DESIGN': [
     { title: 'Minimalist UI Concept', type: 'Web Design', icon: LayoutTemplate },
     { title: 'Magazine Spread', type: 'Print', icon: LayoutTemplate },
     { title: 'Brand Identity', type: 'Graphics', icon: LayoutTemplate }
@@ -75,8 +93,19 @@ const ProjectCard = ({ proj, index = 0 }) => (
         className="h-full"
       >
         <GlassCard className="group cursor-pointer h-full flex flex-col hover:shadow-[0_40px_80px_rgba(220,38,38,0.15)] transition-all duration-700">
-          <div className={`h-56 ${proj.color} relative overflow-hidden flex items-center justify-center flex-shrink-0`}>
-             <span className="text-white/30 font-black text-2xl uppercase tracking-widest z-10">{proj.title}</span>
+          <div 
+            onClick={() => proj.link && window.open(proj.link, '_blank')}
+            className={`h-56 ${proj.color || 'bg-red-600/5'} relative overflow-hidden flex items-center justify-center flex-shrink-0`}
+          >
+             {proj.image ? (
+               <img 
+                 src={proj.image} 
+                 alt={proj.title} 
+                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+               />
+             ) : (
+               <span className="text-white/30 font-black text-2xl uppercase tracking-widest z-10">{proj.title}</span>
+             )}
              <div className="absolute inset-0 bg-[#121212]/10 group-hover:bg-transparent transition-colors duration-500" />
              <motion.div 
               className="absolute -bottom-10 -right-10 w-32 h-32 bg-white/10 rounded-full blur-xl"
@@ -88,7 +117,10 @@ const ProjectCard = ({ proj, index = 0 }) => (
             <div className="inline-block px-4 py-1.5 bg-red-600/10 text-red-600 rounded-full text-xs font-bold tracking-wider mb-4 uppercase self-start">
               {proj.category}
             </div>
-            <h3 className="text-2xl font-black mb-3 flex items-center justify-between group-hover:text-red-600 transition-colors">
+            <h3 
+              onClick={() => proj.link && window.open(proj.link, '_blank')}
+              className="text-2xl font-black mb-3 flex items-center justify-between group-hover:text-red-600 transition-colors"
+            >
               {proj.title}
               <Magnetic strength={0.2}><ExternalLink size={20} className="text-[#121212]/20 group-hover:text-red-600 transition-colors" /></Magnetic>
             </h3>
@@ -269,8 +301,14 @@ const App = () => {
                 GlassCard={GlassCard} 
               />
             )}
-            {/* Placeholder for others */}
-            {['ARTWORKS', 'CERTIFICATIONS'].includes(activeTab) && (
+            {activeTab === 'ARTWORKS' && (
+              <ArtworksView 
+                key="artworks"
+                ARTWORKS={ARTWORKS} 
+                SectionHeader={SectionHeader} 
+              />
+            )}
+            {activeTab === 'CERTIFICATIONS' && (
               <div 
                 key={activeTab}
                 style={{ animation: 'revealUp 0.6s cubic-bezier(0.21, 0.47, 0.32, 0.98) both' }}

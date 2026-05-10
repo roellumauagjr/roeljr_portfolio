@@ -126,15 +126,42 @@ const HomeView = ({ setActiveTab, PROJECTS, ARTWORKS, CERTS, ProjectCard, Artwor
           </div>
         </ScrollReveal>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-          {[ARTWORKS.Photography[0], ARTWORKS.Video[0], ARTWORKS.Layout[0]].map((art, i) => {
+          {[
+            { ...ARTWORKS.PHOTOS[0], label: 'PHOTOS' },
+            { ...ARTWORKS.VIDEOS[0], label: 'VIDEOS' },
+            { ...ARTWORKS['GRAPHIC DESIGN'][0], label: 'GRAPHIC DESIGN' }
+          ].map((art, i) => {
             const Icon = art.icon;
             return (
               <ScrollReveal key={i} delay={i * 0.1}>
-                <div className="group relative cursor-pointer aspect-video sm:aspect-square md:aspect-video flex items-center justify-center hover:-translate-y-2 transition-all duration-500 bg-white/60 backdrop-blur-xl border border-white/80 shadow-[0_8px_30px_rgba(0,0,0,0.04)] rounded-[2.5rem] overflow-hidden">
-                  <div className="absolute inset-0 bg-[#121212]/5 flex flex-col items-center justify-center p-6 text-center group-hover:scale-105 transition-transform duration-700">
-                    <Icon size={32} className="text-[#121212]/30 mb-3" />
-                    <h3 className="text-xl font-black">{art.title}</h3>
-                    <p className="text-red-600 font-bold text-xs uppercase tracking-widest mt-2">{art.type}</p>
+                <div 
+                  onClick={() => art.link && window.open(art.link, '_blank')}
+                  className="group relative flex flex-col rounded-[1.5rem] overflow-hidden border-2 border-red-600 hover:-translate-y-2 transition-all duration-500 cursor-pointer shadow-[0_8px_30px_rgba(220,38,38,0.15)] hover:shadow-[0_20px_50px_rgba(220,38,38,0.3)]"
+                >
+                  {/* Image area */}
+                  <div className="relative aspect-video w-full overflow-hidden bg-[#121212]/10">
+                    {art.image ? (
+                      <img 
+                        src={art.image} 
+                        alt={art.title} 
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#1a1a1a] to-[#2a2a2a]">
+                        <Icon size={48} className="text-white/20" />
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Red footer bar */}
+                  <div className="bg-red-600 px-5 py-3.5 flex items-center justify-between gap-3 flex-shrink-0">
+                    <div className="flex flex-col">
+                      <h3 className="text-white font-black text-[15px] uppercase tracking-wide leading-tight">{art.title}</h3>
+                      <p className="text-white/80 font-bold text-[11px] uppercase tracking-widest mt-0.5">{art.label}</p>
+                    </div>
+                    <div className="flex-shrink-0 text-white/90 group-hover:text-white transition-colors duration-300 ml-2">
+                      <Icon size={28} />
+                    </div>
                   </div>
                 </div>
               </ScrollReveal>
