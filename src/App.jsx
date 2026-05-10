@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { 
   Mail, ArrowRight, ExternalLink, Camera, Code, 
@@ -16,6 +16,7 @@ import TiltCard from './components/animation/TiltCard';
 import Magnetic from './components/animation/Magnetic';
 import TextReveal from './components/animation/TextReveal';
 import OpeningSequence from './components/animation/OpeningSequence';
+import VoxelTransition from './components/animation/VoxelTransition';
 
 // --- CUSTOM BRAND ICONS ---
 const Github = (props) => (
@@ -151,7 +152,9 @@ const App = () => {
   const [activeTab, setActiveTab] = useState('HOME');
   const [showOpening, setShowOpening] = useState(true);
   const [isSwitchOn, setIsSwitchOn] = useState(false);
+  const [isThemeGreen, setIsThemeGreen] = useState(false);
   const navLinks = ['HOME', 'PROJECTS', 'ARTWORKS', 'CERTIFICATIONS', 'ABOUT ME'];
+  const voxelTransitionRef = useRef(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -159,11 +162,10 @@ const App = () => {
 
   return (
     <SmoothScroll>
-      <div className="min-h-screen bg-white text-[#121212] flex flex-col relative overflow-x-hidden selection:bg-red-600 selection:text-white">
+      <div className={`min-h-screen bg-white text-[#121212] flex flex-col relative overflow-x-hidden selection:bg-red-600 selection:text-white transition-colors duration-1000 ${isThemeGreen ? 'theme-green' : ''}`}>
         
         {/* Fonts & Global Styles */}
         <style>{`
-          @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap');
           * { font-family: 'Plus Jakarta Sans', sans-serif; }
           ::-webkit-scrollbar { width: 0px; }
           .animate-float { animation: float 8s ease-in-out infinite; }
@@ -178,6 +180,7 @@ const App = () => {
         `}</style>
 
         {showOpening && <OpeningSequence onComplete={() => setShowOpening(false)} />}
+        <VoxelTransition ref={voxelTransitionRef} />
 
         <div className={`transition-all duration-700 delay-200 ${showOpening ? 'opacity-0 scale-95 h-screen overflow-hidden' : 'opacity-100 scale-100'}`}>
           {/* --- BACKGROUND --- */}
@@ -226,8 +229,23 @@ const App = () => {
 
               <Magnetic strength={0.2}>
                 <button 
-                  onClick={() => setIsSwitchOn(!isSwitchOn)}
-                  className={`relative w-24 h-[44px] rounded-full transition-all duration-500 flex items-center p-1.5 shadow-lg ${isSwitchOn ? 'bg-green-500' : 'bg-[#121212]/10'}`}
+                  onClick={async (e) => {
+                    // 1. Click the switch -> update visual switch state
+                    const nextState = !isSwitchOn;
+                    setIsSwitchOn(nextState);
+                    
+                    // 2. Animate switch -> wait for the switch animation to finish
+                    await new Promise(resolve => setTimeout(resolve, 500));
+                    
+                    // 3. Screen capture
+                    if (voxelTransitionRef.current) {
+                      await voxelTransitionRef.current.triggerTransition(e.clientX, e.clientY);
+                    }
+                    
+                    // 4. Update the global theme behind the shattered glass
+                    setIsThemeGreen(nextState);
+                  }}
+                  className={`relative w-24 h-[44px] rounded-full transition-all duration-500 flex items-center p-1.5 shadow-lg ${isSwitchOn ? 'bg-[#22c55e]' : 'bg-[#dc2626]'}`}
                 >
                   <motion.div 
                     animate={{ x: isSwitchOn ? 52 : 0 }}
@@ -241,7 +259,7 @@ const App = () => {
         </nav>
 
         {/* Main Content Area */}
-        <main className="flex-grow z-10 pt-32">
+        <main className="flex-grow relative z-10 pt-32">
           <AnimatePresence mode="wait">
             {activeTab === 'HOME' && (
               <HomeView 
@@ -252,6 +270,7 @@ const App = () => {
                 CERTS={CERTS} 
                 ProjectCard={ProjectCard}
                 CertCard={CertCard}
+                isSwitchOn={isThemeGreen}
               />
             )}
             {activeTab === 'PROJECTS' && (
@@ -267,6 +286,7 @@ const App = () => {
                 key="about"
                 SectionHeader={SectionHeader} 
                 GlassCard={GlassCard} 
+                isSwitchOn={isThemeGreen}
               />
             )}
             {/* Placeholder for others */}

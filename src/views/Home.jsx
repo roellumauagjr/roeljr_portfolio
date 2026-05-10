@@ -16,7 +16,7 @@ export const ScrollReveal = ({ children, delay = 0 }) => (
   </div>
 );
 
-const HomeView = ({ setActiveTab, PROJECTS, ARTWORKS, CERTS, ProjectCard, ArtworksView, CertCard }) => {
+const HomeView = ({ setActiveTab, PROJECTS, ARTWORKS, CERTS, ProjectCard, ArtworksView, CertCard, isSwitchOn }) => {
   return (
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
@@ -71,7 +71,7 @@ const HomeView = ({ setActiveTab, PROJECTS, ARTWORKS, CERTS, ProjectCard, Artwor
             <div className="absolute inset-0 bg-red-600/20 translate-x-6 translate-y-6 rounded-full blur-2xl group-hover:bg-red-600/30 transition-all duration-700 z-0 animate-float"></div>
             <div className="relative aspect-square md:aspect-[4/5] bg-white/80 backdrop-blur-xl border-8 border-white shadow-2xl rounded-[3rem] md:rounded-[4rem] overflow-hidden z-10 transition-transform duration-700 group-hover:-translate-y-2">
               <img 
-                src="ROEL ID PICTURE.png" 
+                src={isSwitchOn ? "ADRIAN ID PICTURE.png" : "ROEL ID PICTURE.png"} 
                 alt="Roel Jr." 
                 className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700"
               />

@@ -6,7 +6,7 @@ import TiltCard from '../components/animation/TiltCard';
 import TextReveal from '../components/animation/TextReveal';
 import Magnetic from '../components/animation/Magnetic';
 
-const AboutView = ({ SectionHeader, GlassCard }) => (
+const AboutView = ({ SectionHeader, GlassCard, isSwitchOn }) => (
   <motion.div 
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
@@ -22,7 +22,7 @@ const AboutView = ({ SectionHeader, GlassCard }) => (
           <div className="absolute inset-0 bg-red-600/20 translate-x-4 translate-y-4 rounded-[3rem] blur-2xl group-hover:bg-red-600/30 transition-all duration-700 z-0 animate-float"></div>
           <div className="relative aspect-square md:aspect-[4/5] bg-white/80 backdrop-blur-md border-8 border-white/80 shadow-xl rounded-[3rem] overflow-hidden z-10 transition-transform duration-700 group-hover:-translate-y-2">
             <img 
-              src="ROEL ID PICTURE.png" 
+              src={isSwitchOn ? "ADRIAN ID PICTURE.png" : "ROEL ID PICTURE.png"} 
               alt="Roel Jr." 
               className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700"
             />

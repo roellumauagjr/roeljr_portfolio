@@ -1,1 +1,7 @@
 @import "tailwindcss";
+
+@layer base {
+  .theme-green {
+    --color-red-600: var(--color-green-500);
+  }
+}
