@@ -25,6 +25,20 @@ const Github = (props) => (
 );
 
 const PROJECTS = [
+  { 
+    title: 'LCC Press', 
+    category: 'UI/UX Design', 
+    desc: 'Digital system streamlining local printing press operations, providing an efficient platform for managing business receipt orders.', 
+    image: '/LCCPRESS.png',
+    link: 'https://www.figma.com/design/7bFpqw8EWDEfEnGnFfssuv/LCC-Press?t=BPb1tdP6D3GF6jSX-1'
+  },
+  { 
+    title: 'Ahmoree Productions', 
+    category: 'UI/UX Design', 
+    desc: 'Comprehensive UI/UX design for a Dutch content creator, featuring responsive desktop and mobile layouts across multiple site pages.', 
+    image: '/AHMOREE_PRODUCTIONS.png',
+    link: 'https://www.figma.com/design/eoCMB5QWDHKW60tIxSeMoF/Ahmoree-Productions?node-id=0-1&t=2iqZFBAIyiirLyXx-1'
+  },
   { title: 'LibraNet', category: 'Computer Programming 2', desc: 'Desktop library management system that automates book borrowing and inventory tracking. Developed using Java. Role: Solo Programmer.', color: 'bg-red-600/5' },
   { title: 'QuickServe', category: 'Software Engineering', desc: 'Web-based point-of-sale dashboard designed to streamline order-taking for restaurants using manual processes. Developed using HTML & CSS. Role: Partnered Programmer.', color: 'bg-red-600/5' },
   { title: 'Twin Fall', category: 'Game Programming', desc: 'Narrative-based game where a character travels between underworld and overworld realms to reunite with its twin, Luna. Role: Creative Director & Lead Artist.', color: 'bg-red-600/5' },
