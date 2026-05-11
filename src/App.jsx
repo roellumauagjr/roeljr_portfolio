@@ -85,7 +85,7 @@ const GlassCard = ({ children, className = "" }) => {
   );
 };
 
-const ProjectCard = ({ proj, index = 0 }) => (
+const ProjectCard = ({ proj, index = 0, isSwitchOn }) => (
   <ScrollReveal delay={index * 0.1}>
     <TiltCard className="h-full">
       <motion.div
@@ -93,10 +93,10 @@ const ProjectCard = ({ proj, index = 0 }) => (
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
         className="h-full"
       >
-        <GlassCard className="group cursor-pointer h-full flex flex-col hover:shadow-[0_40px_80px_rgba(220,38,38,0.15)] transition-all duration-700">
+        <GlassCard className={`group cursor-pointer h-full flex flex-col hover:shadow-[0_40px_80px_rgba(${isSwitchOn ? '34,197,94' : '220,38,38'},0.15)] transition-all duration-700`}>
           <div 
             onClick={() => proj.link && window.open(proj.link, '_blank')}
-            className={`h-56 ${proj.color || 'bg-red-600/5'} relative overflow-hidden flex items-center justify-center flex-shrink-0`}
+            className={`h-56 ${proj.color || (isSwitchOn ? 'bg-green-600/5' : 'bg-red-600/5')} relative overflow-hidden flex items-center justify-center flex-shrink-0`}
           >
              {proj.image ? (
                <img 
@@ -115,15 +115,15 @@ const ProjectCard = ({ proj, index = 0 }) => (
              />
           </div>
           <div className="p-8 flex-grow flex flex-col">
-            <div className="inline-block px-4 py-1.5 bg-red-600/10 text-red-600 rounded-full text-xs font-bold tracking-wider mb-4 uppercase self-start">
+            <div className={`inline-block px-4 py-1.5 ${isSwitchOn ? 'bg-green-600/10 text-green-600' : 'bg-red-600/10 text-red-600'} rounded-full text-xs font-bold tracking-wider mb-4 uppercase self-start`}>
               {proj.category}
             </div>
             <h3 
               onClick={() => proj.link && window.open(proj.link, '_blank')}
-              className="text-2xl font-black mb-3 flex items-center justify-between group-hover:text-red-600 transition-colors"
+              className={`text-2xl font-black mb-3 flex items-center justify-between ${isSwitchOn ? 'group-hover:text-green-600' : 'group-hover:text-red-600'} transition-colors`}
             >
               {proj.title}
-              <Magnetic strength={0.2}><ExternalLink size={20} className="text-[#121212]/20 group-hover:text-red-600 transition-colors" /></Magnetic>
+              <Magnetic strength={0.2}><ExternalLink size={20} className={`text-[#121212]/20 ${isSwitchOn ? 'group-hover:text-green-600' : 'group-hover:text-red-600'} transition-colors`} /></Magnetic>
             </h3>
             <p className="text-[#121212]/70 font-medium leading-relaxed">{proj.desc}</p>
           </div>
@@ -133,19 +133,19 @@ const ProjectCard = ({ proj, index = 0 }) => (
   </ScrollReveal>
 );
 
-const CertCard = ({ cert, index = 0 }) => (
+const CertCard = ({ cert, index = 0, isSwitchOn }) => (
   <ScrollReveal delay={index * 0.1}>
     <TiltCard className="h-full">
-      <GlassCard className="relative p-6 md:p-8 hover:border-red-600/30 hover:shadow-[0_40px_80px_rgba(220,38,38,0.1)] transition-all duration-700 group flex flex-col md:flex-row items-start md:items-center gap-6 h-full">
+      <GlassCard className={`relative p-6 md:p-8 ${isSwitchOn ? 'hover:border-green-600/30 hover:shadow-[0_40px_80px_rgba(34,197,94,0.1)]' : 'hover:border-red-600/30 hover:shadow-[0_40px_80px_rgba(220,38,38,0.1)]'} transition-all duration-700 group flex flex-col md:flex-row items-start md:items-center gap-6 h-full`}>
         <div className="relative z-10 flex-shrink-0">
-          <div className="w-16 h-16 bg-red-600/10 text-red-600 rounded-full flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition-colors duration-500">
+          <div className={`w-16 h-16 ${isSwitchOn ? 'bg-green-600/10 text-green-600 group-hover:bg-green-600' : 'bg-red-600/10 text-red-600 group-hover:bg-red-600'} rounded-full flex items-center justify-center group-hover:text-white transition-colors duration-500`}>
             <BadgeCheck size={32} />
           </div>
-          <div className="absolute inset-[-6px] border-2 border-dashed border-red-600/20 rounded-full animate-[spin_15s_linear_infinite]" />
+          <div className={`absolute inset-[-6px] border-2 border-dashed ${isSwitchOn ? 'border-green-600/20' : 'border-red-600/20'} rounded-full animate-[spin_15s_linear_infinite]`} />
         </div>
         <div className="flex-1 z-10">
           <div className="inline-block px-3 py-1 bg-[#121212]/5 text-[#121212]/60 rounded-full text-[10px] font-black tracking-widest uppercase mb-2">Official Certification</div>
-          <h3 className="text-xl md:text-2xl font-black group-hover:text-red-600 transition-colors leading-tight">{cert.title}</h3>
+          <h3 className={`text-xl md:text-2xl font-black ${isSwitchOn ? 'group-hover:text-green-600' : 'group-hover:text-red-600'} transition-colors leading-tight`}>{cert.title}</h3>
           <p className="text-[#121212]/50 font-medium mt-1 flex items-center gap-2">
             <span className="w-1.5 h-1.5 bg-[#121212]/30 rounded-full" /> {cert.issuer}
           </p>
@@ -154,10 +154,10 @@ const CertCard = ({ cert, index = 0 }) => (
         {/* Year Pill with Internal Ribbon */}
         <div className="relative flex-shrink-0 self-center">
           <div 
-            className="hidden md:block absolute top-[-60px] left-1/2 -translate-x-1/2 w-12 h-40 bg-red-600 z-0 group-hover:h-48 transition-all duration-700" 
+            className={`hidden md:block absolute top-[-60px] left-1/2 -translate-x-1/2 w-12 h-40 ${isSwitchOn ? 'bg-green-600' : 'bg-red-600'} z-0 group-hover:h-48 transition-all duration-700`} 
             style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 50% 90%, 0 100%)' }} 
           />
-          <div className="relative z-10 px-6 py-3 border-2 border-[#121212]/10 bg-white/80 backdrop-blur-md text-[#121212] font-black tracking-widest text-sm rounded-full group-hover:border-red-600 group-hover:text-red-600 transition-colors shadow-sm">
+          <div className={`relative z-10 px-6 py-3 border-2 border-[#121212]/10 bg-white/80 backdrop-blur-md text-[#121212] font-black tracking-widest text-sm rounded-full ${isSwitchOn ? 'group-hover:border-green-600 group-hover:text-green-600' : 'group-hover:border-red-600 group-hover:text-red-600'} transition-colors shadow-sm`}>
             {cert.year}
           </div>
         </div>
@@ -166,12 +166,12 @@ const CertCard = ({ cert, index = 0 }) => (
   </ScrollReveal>
 );
 
-const SectionHeader = ({ title, subtitle, icon }) => (
+const SectionHeader = ({ title, subtitle, icon, isSwitchOn }) => (
   <ScrollReveal>
     <div className="mb-12 flex flex-col items-center text-center">
-      <div className="w-12 h-1.5 bg-red-600 rounded-full mb-8"></div>
+      <div className={`w-12 h-1.5 ${isSwitchOn ? 'bg-green-600' : 'bg-red-600'} rounded-full mb-8`}></div>
       <div className="flex items-center gap-4 mb-4">
-        <span className="p-4 bg-red-600/10 rounded-full text-red-600">{icon}</span>
+        <span className={`p-4 ${isSwitchOn ? 'bg-green-600/10 text-green-600' : 'bg-red-600/10 text-red-600'} rounded-full`}>{icon}</span>
         <h2 className="text-4xl md:text-5xl font-black tracking-tighter uppercase">{title}</h2>
       </div>
       <p className="text-lg text-[#121212]/60 font-medium max-w-2xl">{subtitle}</p>
@@ -188,13 +188,18 @@ const App = () => {
   const navLinks = ['HOME', 'PROJECTS', 'ARTWORKS', 'CERTIFICATIONS', 'ABOUT ME'];
   const voxelTransitionRef = useRef(null);
 
+  // Helper to get theme color
+  const getThemeColor = () => isThemeGreen ? 'text-green-600' : 'text-red-600';
+  const getThemeBg = () => isThemeGreen ? 'bg-green-600' : 'bg-red-600';
+  const getThemeSelection = () => isThemeGreen ? 'selection:bg-green-600' : 'selection:bg-red-600';
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [activeTab]);
 
   return (
     <SmoothScroll>
-      <div className={`min-h-screen bg-white text-[#121212] flex flex-col relative overflow-x-hidden selection:bg-red-600 selection:text-white transition-colors duration-1000 ${isThemeGreen ? 'theme-green' : ''}`}>
+      <div className={`min-h-screen bg-white text-[#121212] flex flex-col relative overflow-x-hidden ${getThemeSelection()} selection:text-white transition-colors duration-1000 ${isThemeGreen ? 'theme-green' : ''}`}>
         
         {/* Fonts & Global Styles */}
         <style>{`
@@ -226,7 +231,7 @@ const App = () => {
               whileHover={{ scale: 1.05 }}
               onClick={() => setActiveTab('HOME')}
             >
-              ROEL <span className="text-red-600">JR.</span>
+              {isThemeGreen ? 'ADRIAN' : 'ROEL'} <span className={getThemeColor()}>{isThemeGreen ? 'KEITH' : 'JR.'}</span>
             </motion.div>
             
             <div className="hidden md:flex space-x-2 items-center text-sm font-bold tracking-wide bg-[#121212]/5 p-1.5 rounded-full">
@@ -242,7 +247,7 @@ const App = () => {
                     {activeTab === link && (
                       <motion.div 
                         layoutId="nav-pill"
-                        className="absolute inset-0 bg-red-600 rounded-full shadow-lg shadow-red-600/20"
+                        className={`absolute inset-0 ${getThemeBg()} rounded-full shadow-lg ${isThemeGreen ? 'shadow-green-600/20' : 'shadow-red-600/20'}`}
                         transition={{ type: "spring", stiffness: 380, damping: 30 }}
                       />
                     )}
@@ -253,8 +258,8 @@ const App = () => {
 
             <div className="hidden md:flex items-center gap-4">
               <Magnetic strength={0.3}>
-                <a href="https://github.com/roellumauagjr" target="_blank" rel="noopener noreferrer" 
-                   className="flex items-center gap-2 px-6 py-3 bg-[#121212] text-white rounded-full hover:bg-red-600 transition-all duration-300 shadow-lg">
+                <a href={isThemeGreen ? "https://github.com/condeadriankeith" : "https://github.com/roellumauagjr"} target="_blank" rel="noopener noreferrer" 
+                   className={`flex items-center gap-2 px-6 py-3 bg-[#121212] text-white rounded-full hover:${getThemeBg()} transition-all duration-300 shadow-lg`}>
                   <Github size={16} /> GITHUB
                 </a>
               </Magnetic>
@@ -300,8 +305,8 @@ const App = () => {
                 PROJECTS={PROJECTS} 
                 ARTWORKS={ARTWORKS} 
                 CERTS={CERTS} 
-                ProjectCard={ProjectCard}
-                CertCard={CertCard}
+                ProjectCard={(props) => <ProjectCard {...props} isSwitchOn={isThemeGreen} />}
+                CertCard={(props) => <CertCard {...props} isSwitchOn={isThemeGreen} />}
                 isSwitchOn={isThemeGreen}
               />
             )}
@@ -309,14 +314,15 @@ const App = () => {
               <ProjectsView 
                 key="projects"
                 PROJECTS={PROJECTS} 
-                SectionHeader={SectionHeader} 
-                ProjectCard={ProjectCard} 
+                SectionHeader={(props) => <SectionHeader {...props} isSwitchOn={isThemeGreen} />} 
+                ProjectCard={(props) => <ProjectCard {...props} isSwitchOn={isThemeGreen} />} 
+                isSwitchOn={isThemeGreen}
               />
             )}
             {activeTab === 'ABOUT ME' && (
               <AboutView 
                 key="about"
-                SectionHeader={SectionHeader} 
+                SectionHeader={(props) => <SectionHeader {...props} isSwitchOn={isThemeGreen} />} 
                 GlassCard={GlassCard} 
                 isSwitchOn={isThemeGreen}
               />
@@ -325,7 +331,8 @@ const App = () => {
               <ArtworksView 
                 key="artworks"
                 ARTWORKS={ARTWORKS} 
-                SectionHeader={SectionHeader} 
+                SectionHeader={(props) => <SectionHeader {...props} isSwitchOn={isThemeGreen} />} 
+                isSwitchOn={isThemeGreen}
               />
             )}
             {activeTab === 'CERTIFICATIONS' && (
@@ -342,11 +349,11 @@ const App = () => {
 
         <footer className="z-10 bg-white/50 backdrop-blur-2xl border-t border-white/60 py-10 mt-20 rounded-t-[3rem]">
           <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="text-2xl font-black tracking-tighter">ROEL <span className="text-red-600">JR.</span></div>
+            <div className="text-2xl font-black tracking-tighter">{isThemeGreen ? 'ADRIAN' : 'ROEL'} <span className={getThemeColor()}>{isThemeGreen ? 'KEITH' : 'JR.'}</span></div>
             <p className="text-[#121212]/50 text-sm font-bold tracking-wide uppercase">© {new Date().getFullYear()} Crafted with intent.</p>
             <div className="flex space-x-6">
-              <a href="https://github.com/roellumauagjr" target="_blank" rel="noopener noreferrer" className="p-3 bg-[#121212]/5 rounded-full hover:bg-[#121212] hover:text-white transition-all"><Github size={20} /></a>
-              <a href="mailto:roellumauagjr@gmail.com" className="p-3 bg-red-600/10 rounded-full text-red-600 hover:bg-red-600 hover:text-white transition-all"><Mail size={20} /></a>
+              <a href={isThemeGreen ? "https://github.com/condeadriankeith" : "https://github.com/roellumauagjr"} target="_blank" rel="noopener noreferrer" className="p-3 bg-[#121212]/5 rounded-full hover:bg-[#121212] hover:text-white transition-all"><Github size={20} /></a>
+              <a href={`mailto:${isThemeGreen ? 'condeadriankeith@gmail.com' : 'roellumauagjr@gmail.com'}`} className={`p-3 ${isThemeGreen ? 'bg-green-600/10 text-green-600 hover:bg-green-600' : 'bg-red-600/10 text-red-600 hover:bg-red-600'} rounded-full hover:text-white transition-all`}><Mail size={20} /></a>
             </div>
           </div>
         </footer>
