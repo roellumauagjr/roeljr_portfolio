@@ -22,8 +22,8 @@
 ## Key Features
 
 ### Dual-Persona Design
-- **Roel Jr.** (Red Theme) — Game Development & Digital Media
-- **Adrian Keith** (Green Theme) — Web Development & UI/UX Design
+- **Roel Jr.** (Red Theme) — Web Development & UI/UX Design
+- **Adrian Keith** (Green Theme) — Full Stack Development & Graphic Design
 - Seamless animated transition between personas using a custom **3D voxel explosion effect** powered by Three.js
 
 ### Visual Effects
@@ -143,5 +143,5 @@ PORTFOLIO/
 </p>
 
 <p align="center">
-  <sub>© 2025 — Crafted with intent.</sub>
+  <sub>© 2026 — Crafted with intent.</sub>
 </p>

@@ -69,32 +69,139 @@ const ARTWORKS_GREEN = {
   VIDEOS: [],
   'GRAPHIC DESIGN': [
     { 
-      title: 'Liceo de La Salle Yearbook 2023', 
-      type: 'Yearbook Layout', 
+      title: 'SCRIBE Vol. 29 - Chapter 3', 
+      type: 'The Spectrum - Publication Design', 
+      icon: LayoutTemplate, 
+      image: '/assets/artworks/green/spec-scribe-29-ch3.png' 
+    },
+    { 
+      title: 'SCRIBE Vol. 29 - Chapter 2', 
+      type: 'The Spectrum - Publication Design', 
+      icon: LayoutTemplate, 
+      image: '/assets/artworks/green/spec-scribe-29-ch2.png' 
+    },
+    { 
+      title: 'SCRIBE Vol. 29 - Chapter 1', 
+      type: 'The Spectrum - Publication Design', 
+      icon: LayoutTemplate, 
+      image: '/assets/artworks/green/spec-scribe-29-ch1.png' 
+    },
+    { 
+      title: 'Magazine Previews 3', 
+      type: 'The Spectrum - Magazine Layout', 
       icon: LayoutTemplate, 
       images: [
-        '/assets/artworks/green/yearbook-fb-cover.png',
-        '/assets/artworks/green/yearbook-halloween.png',
-        '/assets/artworks/green/yearbook-dp-frame.jpg'
+        '/assets/artworks/green/spec-mag-preview-3-1.png',
+        '/assets/artworks/green/spec-mag-preview-3-2.png',
+        '/assets/artworks/green/spec-mag-preview-3-3.png',
+        '/assets/artworks/green/spec-mag-preview-3-4.png'
       ] 
     },
     { 
-      title: 'House of Rouen - House Merch Posting', 
-      type: 'Social Media Assets', 
+      title: 'Magazine Previews 2', 
+      type: 'The Spectrum - Magazine Layout', 
       icon: LayoutTemplate, 
       images: [
-        '/assets/artworks/green/rouen-merch-1.png',
-        '/assets/artworks/green/rouen-merch-2.png',
-        '/assets/artworks/green/rouen-merch-3.png',
-        '/assets/artworks/green/rouen-merch-4.png',
-        '/assets/artworks/green/rouen-merch-5.png'
+        '/assets/artworks/green/spec-mag-preview-2-1.png',
+        '/assets/artworks/green/spec-mag-preview-2-2.png',
+        '/assets/artworks/green/spec-mag-preview-2-3.png',
+        '/assets/artworks/green/spec-mag-preview-2-4.png'
       ] 
+    },
+    { 
+      title: 'Magazine Previews 1', 
+      type: 'The Spectrum - Magazine Layout', 
+      icon: LayoutTemplate, 
+      images: [
+        '/assets/artworks/green/spec-mag-preview-1-1.png',
+        '/assets/artworks/green/spec-mag-preview-1-2.png',
+        '/assets/artworks/green/spec-mag-preview-1-3.png',
+        '/assets/artworks/green/spec-mag-preview-1-4.png'
+      ] 
+    },
+    { 
+      title: '#Ecologica', 
+      type: 'The Spectrum - Digital Art', 
+      icon: LayoutTemplate, 
+      images: [
+        '/assets/artworks/green/spec-ecologica-1.png',
+        '/assets/artworks/green/spec-ecologica-2.png'
+      ] 
+    },
+    { 
+      title: '#resubSCRIBE', 
+      type: 'The Spectrum - Branding', 
+      icon: LayoutTemplate, 
+      image: '/assets/artworks/green/spec-resubscribe.png' 
+    },
+    { 
+      title: 'SOA 2025 Highlights', 
+      type: 'The Spectrum - News Graphics', 
+      icon: LayoutTemplate, 
+      image: '/assets/artworks/green/spec-soa-2025.png' 
+    },
+    { 
+      title: 'SONA 2025', 
+      type: 'The Spectrum - Coverage Art', 
+      icon: LayoutTemplate, 
+      images: [
+        '/assets/artworks/green/spec-sona-2025-1.png',
+        '/assets/artworks/green/spec-sona-2025-2.png',
+        '/assets/artworks/green/spec-sona-2025-3.png',
+        '/assets/artworks/green/spec-sona-2025-4.png'
+      ] 
+    },
+    { 
+      title: 'Tiempo Muerto', 
+      type: 'The Spectrum - Editorial Layout', 
+      icon: LayoutTemplate, 
+      image: '/assets/artworks/green/spec-tiempo-muerto.png' 
+    },
+    { 
+      title: 'Maguindanao Massacre Commemoration', 
+      type: 'The Spectrum - Editorial Art', 
+      icon: LayoutTemplate, 
+      image: '/assets/artworks/green/spec-maguindanao.png' 
+    },
+    { 
+      title: 'Martial Law Commemoration', 
+      type: 'The Spectrum - Editorial Art', 
+      icon: LayoutTemplate, 
+      image: '/assets/artworks/green/spec-martial-law.png' 
     },
     { 
       title: 'Martial Law Anniversary Pubmat', 
       type: 'Publication Material', 
       icon: LayoutTemplate, 
       image: '/assets/artworks/green/rouen-martial-law.png' 
+    },
+    { 
+      title: 'Ramadan', 
+      type: 'The Spectrum - Social Media', 
+      icon: LayoutTemplate, 
+      image: '/assets/artworks/green/spec-ramadan.png' 
+    },
+    { 
+      title: 'Magazine 2025 Spotify Playlist', 
+      type: 'The Spectrum - Cover Art', 
+      icon: LayoutTemplate, 
+      image: '/assets/artworks/green/spec-mag-spotify.png' 
+    },
+    { 
+      title: 'Freshmen Walk 2023', 
+      type: 'Event Graphics', 
+      icon: LayoutTemplate, 
+      images: [
+        '/assets/artworks/green/usg-freshmen-walk-1.png',
+        '/assets/artworks/green/usg-freshmen-walk-2.png',
+        '/assets/artworks/green/usg-freshmen-walk-3.png'
+      ] 
+    },
+    { 
+      title: 'USPLASH Overall Champion Posting', 
+      type: 'Social Media Post', 
+      icon: LayoutTemplate, 
+      image: '/assets/artworks/green/usg-usplash-champion.png' 
     },
     { 
       title: 'USPLASH LIVE RESULTS POSTING TEMPLATES', 
@@ -114,19 +221,25 @@ const ARTWORKS_GREEN = {
       image: '/assets/artworks/green/usg-music-fest.png' 
     },
     { 
-      title: 'USPLASH Overall Champion Posting', 
-      type: 'Social Media Post', 
-      icon: LayoutTemplate, 
-      image: '/assets/artworks/green/usg-usplash-champion.png' 
-    },
-    { 
-      title: 'Freshmen Walk 2023', 
-      type: 'Event Graphics', 
+      title: 'House of Rouen - House Merch Posting', 
+      type: 'Social Media Assets', 
       icon: LayoutTemplate, 
       images: [
-        '/assets/artworks/green/usg-freshmen-walk-1.png',
-        '/assets/artworks/green/usg-freshmen-walk-2.png',
-        '/assets/artworks/green/usg-freshmen-walk-3.png'
+        '/assets/artworks/green/rouen-merch-1.png',
+        '/assets/artworks/green/rouen-merch-2.png',
+        '/assets/artworks/green/rouen-merch-3.png',
+        '/assets/artworks/green/rouen-merch-4.png',
+        '/assets/artworks/green/rouen-merch-5.png'
+      ] 
+    },
+    { 
+      title: 'Liceo de La Salle Yearbook 2023', 
+      type: 'Yearbook Layout', 
+      icon: LayoutTemplate, 
+      images: [
+        '/assets/artworks/green/yearbook-fb-cover.png',
+        '/assets/artworks/green/yearbook-halloween.png',
+        '/assets/artworks/green/yearbook-dp-frame.jpg'
       ] 
     }
   ]
