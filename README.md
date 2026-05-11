@@ -1,6 +1,5 @@
-<p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=plus+jakarta+sans&weight=800&size=40&center=true&vCenter=true&width=500&lines=ROEL+JR.+|+ADRIAN+KEITH&color=22c55e" alt="Portfolio Banner" />
-</p>
+<h1 align="center"><b>PORTFOLIO WEBSITE</b></h1>
+<p align="center">ROEL JR LUMAUAG | ADRIAN KEITH CONDE</p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react" alt="React" />
@@ -20,14 +19,14 @@
 
 ---
 
-## ✨ Key Features
+## Key Features
 
-### 🎨 Dual-Persona Design
+### Dual-Persona Design
 - **Roel Jr.** (Red Theme) — Game Development & Digital Media
 - **Adrian Keith** (Green Theme) — Web Development & UI/UX Design
 - Seamless animated transition between personas using a custom **3D voxel explosion effect** powered by Three.js
 
-### 🎭 Visual Effects
+### Visual Effects
 - **Cinematic Opening Sequence** — Animated profile reveal with shockwave effects
 - **Glassmorphism UI** — Modern frosted glass cards with backdrop blur
 - **3D Tilt Cards** — Interactive cards that respond to mouse movement
@@ -35,7 +34,7 @@
 - **Text Reveal Animations** — Character-by-character reveal for engaging typography
 - **Magnetic Buttons** — Buttons that subtly follow your cursor
 
-### 📱 Sections
+### Sections
 | Section | Description |
 |---------|-------------|
 | **Home** | Hero with animated text, featured projects, artworks, and certifications |
@@ -46,7 +45,7 @@
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Category | Technology |
 |----------|------------|
@@ -59,7 +58,7 @@
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ```bash
 # Clone the repository
@@ -81,7 +80,7 @@ npm run preview
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 PORTFOLIO/
@@ -114,15 +113,15 @@ PORTFOLIO/
 
 ---
 
-## 👥 Personas
+## Personas
 
-### 🔴 Roel Jr. Lumauag
+### Roel Jr. Lumauag
 - **Theme Color:** Red (#dc2626)
 - **Focus:** Game Development, Digital Media, Student Leadership
 - **GitHub:** [@roellumauagjr](https://github.com/roellumauagjr)
 - **Email:** roellumauagjr@gmail.com
 
-### 🟢 Adrian Keith Conde
+### Adrian Keith Conde
 - **Theme Color:** Green (#22c55e)
 - **Focus:** Web Development, UI/UX Design, Full Stack
 - **GitHub:** [@condeadriankeith](https://github.com/condeadriankeith)
@@ -130,17 +129,17 @@ PORTFOLIO/
 
 ---
 
-## 🎯 Current Status
+## Current Status
 
-- ✅ Production build ready
-- ✅ Fully responsive (mobile to ultra-wide)
-- ✅ Smooth 60fps animations
-- ✅ Theme switching with 3D transitions
+- Production build ready
+- Fully responsive (mobile to ultra-wide)
+- Smooth 60fps animations
+- Theme switching with 3D transitions
 
 ---
 
 <p align="center">
-  <sub>Built with ❤️ using React, Tailwind, and Three.js</sub>
+  <sub>Built with passion using React, Tailwind, and Three.js</sub>
 </p>
 
 <p align="center">
