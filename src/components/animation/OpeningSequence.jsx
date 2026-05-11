@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const OpeningSequence = ({ onComplete }) => {
+const OpeningSequence = ({ onComplete, isGreen = false }) => {
   const [isVisible, setIsVisible] = useState(true);
+  const themeColor = isGreen ? '#22c55e' : '#dc2626';
+  const themeColorRGB = isGreen ? '34,197,94' : '220,38,38';
+  const profileImage = isGreen ? "/ADRIAN ID PICTURE.png" : "/ROEL ID PICTURE.png";
+  const name = isGreen ? "Adrian Keith" : "Roel Jr.";
 
   useEffect(() => {
-    // Hold the opening sequence, then animate out with a massive blast
     const timer = setTimeout(() => {
       setIsVisible(false);
-      if (onComplete) setTimeout(onComplete, 800); // Faster exit animation
-    }, 2000); // Trigger exit sooner (2s hold)
+      if (onComplete) setTimeout(onComplete, 800);
+    }, 2000);
     return () => clearTimeout(timer);
   }, [onComplete]);
 
-  // Cinematic Shockwave Variants
   const shockwaveVariants = {
     initial: { scale: 0.5, opacity: 1, borderWidth: "8px" },
     animate: (i) => ({
@@ -21,11 +23,11 @@ const OpeningSequence = ({ onComplete }) => {
       opacity: [1, 0.5, 0],
       borderWidth: ["8px", "2px", "0px"],
       transition: {
-        duration: 2, // Sped up shockwaves
+        duration: 2,
         repeat: Infinity,
         repeatDelay: 0.1,
         delay: i * 0.4,
-        ease: [0.16, 1, 0.3, 1] // Custom cinematic spring-like ease
+        ease: [0.16, 1, 0.3, 1]
       }
     })
   };
@@ -49,22 +51,19 @@ const OpeningSequence = ({ onComplete }) => {
             opacity: 0, 
             scale: 2.5, 
             filter: "blur(20px) brightness(2)",
-            transition: { duration: 0.8, ease: [0.7, 0, 0.84, 0] } // Fast zoom in exit
+            transition: { duration: 0.8, ease: [0.7, 0, 0.84, 0] }
           }}
           className="fixed inset-0 z-[100] bg-[#121212] flex items-center justify-center overflow-hidden"
         >
-          {/* Central Anchor */}
           <div className="relative flex items-center justify-center w-64 h-64">
-            
-            {/* Deep Ambient Glow */}
             <motion.div 
               variants={glowVariants}
               initial="initial"
               animate="animate"
-              className="absolute inset-0 bg-red-600 rounded-full blur-[80px] z-0"
+              className="absolute inset-0 rounded-full blur-[80px] z-0"
+              style={{ backgroundColor: themeColor }}
             />
 
-            {/* 3 High-Fidelity Shockwaves */}
             {[0, 1, 2].map((i) => (
               <motion.div
                 key={`shockwave-${i}`}
@@ -72,19 +71,22 @@ const OpeningSequence = ({ onComplete }) => {
                 variants={shockwaveVariants}
                 initial="initial"
                 animate="animate"
-                className="absolute inset-0 rounded-full border-red-600 z-10 shadow-[0_0_40px_rgba(220,38,38,0.8)] mix-blend-screen"
-                style={{ filter: `blur(${i}px)` }}
+                className="absolute inset-0 rounded-full z-10 mix-blend-screen"
+                style={{ 
+                  borderColor: themeColor,
+                  boxShadow: `0 0 40px rgba(${themeColorRGB},0.8)`,
+                  filter: `blur(${i}px)` 
+                }}
               />
             ))}
 
-            {/* Precision Rings */}
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-              className="absolute inset-[-20px] rounded-full border border-dashed border-red-600/30 z-20"
+              className="absolute inset-[-20px] rounded-full border border-dashed z-20"
+              style={{ borderColor: `${themeColor}4D` }}
             />
 
-            {/* Profile Photo - The Core */}
             <motion.div
               initial={{ scale: 0, filter: "blur(20px) brightness(2)" }}
               animate={{ scale: 1, filter: "blur(0px) brightness(1)" }}
@@ -95,14 +97,21 @@ const OpeningSequence = ({ onComplete }) => {
                 mass: 0.5,
                 delay: 0.3
               }}
-              className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-2 border-red-600/50 shadow-[0_0_50px_rgba(220,38,38,0.5)] z-30 bg-[#121212]"
+              className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-2 z-30 bg-[#121212]"
+              style={{ 
+                borderColor: `${themeColor}80`,
+                boxShadow: `0 0 50px rgba(${themeColorRGB},0.5)` 
+              }}
             >
               <img 
-                src="ROEL ID PICTURE.png" 
-                alt="Roel Jr." 
+                src={profileImage} 
+                alt={name} 
                 className="w-full h-full object-cover object-top"
               />
-              <div className="absolute inset-0 bg-red-600/10 mix-blend-overlay"></div>
+              <div 
+                className="absolute inset-0 mix-blend-overlay"
+                style={{ backgroundColor: `${themeColor}1A` }}
+              />
             </motion.div>
           </div>
         </motion.div>
@@ -112,4 +121,3 @@ const OpeningSequence = ({ onComplete }) => {
 };
 
 export default OpeningSequence;
-
