@@ -116,7 +116,7 @@ const HomeView = ({ setActiveTab, PROJECTS, ARTWORKS, CERTS, ProjectCard, Artwor
             <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-10 gap-6">
               <div>
                 <h2 className="text-3xl font-black uppercase flex items-center gap-3">
-                  <span className={`p-2 ${isSwitchOn ? 'bg-green-600/10 text-green-600' : 'bg-[#121212]/10 text-[#121212]'} rounded-full`}><Camera size={24} /></span>
+                  <span className={`p-2 ${isSwitchOn ? 'bg-green-600/10 text-green-600' : 'bg-[#121212]/10 text-[#121212]'} rounded-full`}>{isSwitchOn ? <LayoutTemplate size={24} /> : <Camera size={24} />}</span>
                   Latest Artworks
                 </h2>
               </div>
@@ -129,11 +129,14 @@ const HomeView = ({ setActiveTab, PROJECTS, ARTWORKS, CERTS, ProjectCard, Artwor
             </div>
           </ScrollReveal>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {[
-              ARTWORKS.PHOTOS?.[0] && { ...ARTWORKS.PHOTOS[0], label: 'PHOTOS' },
-              ARTWORKS.VIDEOS?.[0] && { ...ARTWORKS.VIDEOS[0], label: 'VIDEOS' },
-              ARTWORKS['GRAPHIC DESIGN']?.[0] && { ...ARTWORKS['GRAPHIC DESIGN'][0], label: 'GRAPHIC DESIGN' }
-            ].filter(Boolean).map((art, i) => {
+            {(isSwitchOn 
+              ? ARTWORKS['GRAPHIC DESIGN']?.slice(0, 3).map(art => ({ ...art, label: 'GRAPHIC DESIGN' }))
+              : [
+                  ARTWORKS.PHOTOS?.[0] && { ...ARTWORKS.PHOTOS[0], label: 'PHOTOS' },
+                  ARTWORKS.VIDEOS?.[0] && { ...ARTWORKS.VIDEOS[0], label: 'VIDEOS' },
+                  ARTWORKS['GRAPHIC DESIGN']?.[0] && { ...ARTWORKS['GRAPHIC DESIGN'][0], label: 'GRAPHIC DESIGN' }
+                ].filter(Boolean)
+            ).map((art, i) => {
               const Icon = art.icon;
               return (
                 <ScrollReveal key={i} delay={i * 0.1}>

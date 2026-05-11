@@ -64,11 +64,78 @@ const ARTWORKS = {
   'GRAPHIC DESIGN': [ { title: 'Minimalist UI Concept', type: 'Web Design', icon: LayoutTemplate }, { title: 'Magazine Spread', type: 'Print', icon: LayoutTemplate }, { title: 'Brand Identity', type: 'Graphics', icon: LayoutTemplate } ]
 };
 
+const ARTWORKS_GREEN = {
+  PHOTOS: [],
+  VIDEOS: [],
+  'GRAPHIC DESIGN': [
+    { 
+      title: 'Liceo de La Salle Yearbook 2023', 
+      type: 'Yearbook Layout', 
+      icon: LayoutTemplate, 
+      images: [
+        '/assets/artworks/green/yearbook-fb-cover.png',
+        '/assets/artworks/green/yearbook-halloween.png',
+        '/assets/artworks/green/yearbook-dp-frame.jpg'
+      ] 
+    },
+    { 
+      title: 'House of Rouen - House Merch Posting', 
+      type: 'Social Media Assets', 
+      icon: LayoutTemplate, 
+      images: [
+        '/assets/artworks/green/rouen-merch-1.png',
+        '/assets/artworks/green/rouen-merch-2.png',
+        '/assets/artworks/green/rouen-merch-3.png',
+        '/assets/artworks/green/rouen-merch-4.png',
+        '/assets/artworks/green/rouen-merch-5.png'
+      ] 
+    },
+    { 
+      title: 'Martial Law Anniversary Pubmat', 
+      type: 'Publication Material', 
+      icon: LayoutTemplate, 
+      image: '/assets/artworks/green/rouen-martial-law.png' 
+    },
+    { 
+      title: 'USPLASH LIVE RESULTS POSTING TEMPLATES', 
+      type: 'Social Media Templates', 
+      icon: LayoutTemplate, 
+      images: [
+        '/assets/artworks/green/usg-usplash-template-1.png',
+        '/assets/artworks/green/usg-usplash-template-2.png',
+        '/assets/artworks/green/usg-usplash-template-3.png',
+        '/assets/artworks/green/usg-usplash-template-4.png'
+      ] 
+    },
+    { 
+      title: 'Music Fest Promotional Poster', 
+      type: 'Event Branding', 
+      icon: LayoutTemplate, 
+      image: '/assets/artworks/green/usg-music-fest.png' 
+    },
+    { 
+      title: 'USPLASH Overall Champion Posting', 
+      type: 'Social Media Post', 
+      icon: LayoutTemplate, 
+      image: '/assets/artworks/green/usg-usplash-champion.png' 
+    },
+    { 
+      title: 'Freshmen Walk 2023', 
+      type: 'Event Graphics', 
+      icon: LayoutTemplate, 
+      images: [
+        '/assets/artworks/green/usg-freshmen-walk-1.png',
+        '/assets/artworks/green/usg-freshmen-walk-2.png',
+        '/assets/artworks/green/usg-freshmen-walk-3.png'
+      ] 
+    }
+  ]
+};
+
 const EDUCATION_GREEN = [
   { school: 'University of St. La Salle Bacolod', degree: 'BS Computer Science', period: 'August 2023 - June 2027', details: "Consistent Deans Lister since AY 2023" },
   { school: 'Liceo de La Salle - USLS Bacolod', degree: 'Senior High School STEM', period: 'August 2021 - June 2023', details: 'Graduated with High Honors' },
   { school: 'St. Joseph School - La Salle', degree: 'Junior High School', period: 'August 2017 - June 2021', details: 'Red Shield Awardee' },
-  { school: 'Estefania Elementary School', degree: 'Elementary', period: '2017', details: 'Academic Excellence' },
 ];
 
 const ORGS_GREEN = [
@@ -85,27 +152,27 @@ const ORGS_GREEN = [
 ];
 
 const EDUCATION_RED = [
-  { school: 'University of St. La Salle Bacolod', degree: 'BS Computer Science (Game Development)', period: 'August 2023 - 2027', details: "Dean's Lister" },
-  { school: 'Liceo de La Salle - USLS Bacolod', degree: 'Senior High School STEM', period: 'August 2021 - June 2023', details: 'Graduated with Highest Honors' },
+  { school: 'University of St. La Salle Bacolod', degree: 'BS Computer Science, Major in Game Development', period: 'August 2023 - 2027', details: "Dean's Lister" },
+  { school: 'Liceo De La Salle - USLS Bacolod', degree: 'Senior High School STEM', period: 'August 2021 - June 2023', details: 'Graduated with Highest Honors' },
   { school: 'Bata National High School', degree: 'Junior High School', period: 'June 2018 - July 2021', details: 'Batch Valedictorian, With High Honors' },
 ];
 
 const ORGS_RED = [
   { role: 'Videographer', org: 'The Spectrum - USLS Media Corps', period: '2025 - Present' },
-  { role: 'PR Head', org: 'College of Engineering and Computing Studies Council', period: '2024 - 2025' },
-  { role: 'Documentation Committee', org: 'USLS ISACA Student Group', period: '2024 - 2025' },
+  { role: 'Department of Public Relations Head', org: 'College of Engineering and Computing Studies Council', period: '2024 - 2025' },
+  { role: 'Documentation Committee Member', org: 'USLS ISACA Student Group', period: '2024 - 2025' },
   { role: 'Videographer', org: 'The Spectrum - USLS Media Corps', period: '2023 - 2024' },
   { role: 'Club Member', org: 'Google Developer Student Clubs - USLS', period: '2023 - 2024' },
-  { role: 'Documentation Committee', org: 'USLS ISACA Student Group', period: '2023 - 2024' },
-  { role: 'Media Lab Volunteer', org: 'Center for Marketing and Communications', period: '2023 - 2024' },
-  { role: 'Media Affairs Undersecretary', org: 'Computer Science Society - USLS', period: '2023 - 2024' },
-  { role: 'PR Undersecretary', org: 'USLS Student Government', period: '2023 - 2024' },
+  { role: 'Documentation Committee Member', org: 'USLS ISACA Student Group', period: '2023 - 2024' },
+  { role: 'CMC Volunteer', org: 'Center for Marketing and Communications: Media Lab', period: '2023 - 2024' },
+  { role: 'Department of Media Affairs Undersecretary', org: 'Computer Science Society - USLS', period: '2023 - 2024' },
+  { role: 'Department of Public Relations Undersecretary', org: 'USLS Student Government', period: '2023 - 2024' },
   { role: 'Red Cross Volunteer', org: 'Senior Plus Red Cross Youth Council', period: '2022 - 2023' },
   { role: 'Videojournalist', org: 'Kapawa Official English Publication', period: '2022 - 2023' },
-  { role: 'PR Secretary', org: 'House of Paris Executives - Liceo De La Salle', period: '2022 - 2023' },
-  { role: 'Assistant Strand Editor', org: 'The Liceo De La Salle Yearbook', period: '2021 - 2022' },
-  { role: 'Media & Arts Videography', org: 'STEM Council - Liceo De La Salle', period: '2021 - 2022' },
-  { role: 'PR Undersecretary', org: 'House of Paris Executives - Liceo De La Salle', period: '2021 - 2022' },
+  { role: 'Department of Public Relations Secretary', org: 'House of Paris Executives - Liceo De La Salle', period: '2022 - 2023' },
+  { role: 'Assistant Strand (STEM) Editor', org: 'The Liceo De La Salle Yearbook', period: '2021 - 2022' },
+  { role: 'Media and Arts Videography Committee Member', org: 'STEM Council - Liceo De La Salle', period: '2021 - 2022' },
+  { role: 'Department of Public Relations Undersecretary', org: 'House of Paris Executives - Liceo De La Salle', period: '2021 - 2022' },
 ];
 
 const GlassCard = ({ children, className = "" }) => {
@@ -228,7 +295,7 @@ const ThemeLayout = ({ isGreen }) => {
 
   const PROJECTS_DATA = isGreen ? PROJECTS_GREEN : PROJECTS;
   const CERTS_DATA = isGreen ? CERTS_GREEN : CERTS;
-  const ARTWORKS_DATA = isGreen ? { PHOTOS: [], VIDEOS: [], 'GRAPHIC DESIGN': [] } : ARTWORKS;
+  const ARTWORKS_DATA = isGreen ? ARTWORKS_GREEN : ARTWORKS;
   const EDUCATION_DATA = isGreen ? EDUCATION_GREEN : (EDUCATION_RED || null);
   const ORGS_DATA = isGreen ? ORGS_GREEN : (ORGS_RED || null);
 
@@ -295,11 +362,7 @@ const ThemeLayout = ({ isGreen }) => {
                 <AboutView key="about" SectionHeader={(props) => <SectionHeader {...props} isGreen={isGreen} />} GlassCard={GlassCard} isSwitchOn={isGreen} EDUCATION={EDUCATION_DATA} ORGS={ORGS_DATA} />
               )}
               {currentPage === 'artworks' && (
-                isGreen ? (
-                  <div key="artworks-empty" style={{ animation: 'revealUp 0.6s cubic-bezier(0.21, 0.47, 0.32, 0.98) both' }} className="flex items-center justify-center h-[50vh] text-4xl font-black uppercase text-[#121212]/20">ARTWORKS VIEW COMING SOON</div>
-                ) : (
-                  <ArtworksView key="artworks" ARTWORKS={ARTWORKS} SectionHeader={(props) => <SectionHeader {...props} isGreen={isGreen} />} isSwitchOn={isGreen} />
-                )
+                <ArtworksView key="artworks" ARTWORKS={ARTWORKS_DATA} SectionHeader={(props) => <SectionHeader {...props} isGreen={isGreen} />} isSwitchOn={isGreen} />
               )}
               {currentPage === 'certifications' && (
                 <div key="certifications" style={{ animation: 'revealUp 0.6s cubic-bezier(0.21, 0.47, 0.32, 0.98) both' }} className="max-w-5xl mx-auto px-6 py-10">
