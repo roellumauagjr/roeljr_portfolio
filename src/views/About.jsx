@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { User, GraduationCap, Users } from 'lucide-react';
-import { ScrollReveal } from './Home';
 import TiltCard from '../components/animation/TiltCard';
 import TextReveal from '../components/animation/TextReveal';
 import Magnetic from '../components/animation/Magnetic';
@@ -11,16 +10,22 @@ const AboutView = ({ SectionHeader, GlassCard, isSwitchOn, EDUCATION, ORGS }) =>
   
   return (
     <motion.div 
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      transition={{ duration: 0.6 }}
+      initial={{ opacity: 0, scale: 0.95, y: 30 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      exit={{ opacity: 0, scale: 0.95, y: -30 }}
+      transition={{ type: "spring", stiffness: 200, damping: 20 }}
       className="max-w-6xl mx-auto px-6 py-10"
     >
       <SectionHeader title="About Me." subtitle="A blend of logic, leadership, and creativity." icon={<User size={32} />} isSwitchOn={isSwitchOn} />
 
       <div className="flex flex-col lg:flex-row gap-12 mb-16 items-center lg:items-start mt-16">
-        <ScrollReveal className="w-full lg:w-1/3 relative group">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9, x: -30 }}
+          whileInView={{ opacity: 1, scale: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ type: "spring", stiffness: 200, damping: 20 }}
+          className="w-full lg:w-1/3 relative group"
+        >
           <TiltCard>
             <div className={`absolute inset-0 ${isSwitchOn ? 'bg-green-600/20 group-hover:bg-green-600/30' : 'bg-red-600/20 group-hover:bg-red-600/30'} translate-x-4 translate-y-4 rounded-[3rem] blur-2xl transition-all duration-700 z-0 animate-float`}></div>
             <div className="relative aspect-square md:aspect-[4/5] bg-white/80 backdrop-blur-md border-8 border-white/80 shadow-xl rounded-[3rem] overflow-hidden z-10 transition-transform duration-700 group-hover:-translate-y-2">
@@ -31,9 +36,15 @@ const AboutView = ({ SectionHeader, GlassCard, isSwitchOn, EDUCATION, ORGS }) =>
               />
             </div>
           </TiltCard>
-        </ScrollReveal>
+        </motion.div>
 
-        <ScrollReveal delay={0.2} className="w-full lg:w-2/3">
+        <motion.div 
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ type: "spring", stiffness: 200, damping: 20, delay: 0.2 }}
+          className="w-full lg:w-2/3"
+        >
           <TiltCard>
             <GlassCard className={`p-8 md:p-12 h-full ${isSwitchOn ? 'hover:shadow-[0_40px_80px_rgba(34,197,94,0.1)]' : 'hover:shadow-[0_40px_80px_rgba(220,38,38,0.1)]'} transition-all duration-700`}>
               <h3 className="text-3xl font-black mb-6">
@@ -53,12 +64,17 @@ const AboutView = ({ SectionHeader, GlassCard, isSwitchOn, EDUCATION, ORGS }) =>
               </p>
             </GlassCard>
           </TiltCard>
-        </ScrollReveal>
+        </motion.div>
       </div>
       
       {hasData ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-          <ScrollReveal delay={0.1}>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ type: "spring", stiffness: 200, damping: 25, delay: 0.1 }}
+          >
             <TiltCard>
               <GlassCard className={`p-8 md:p-10 h-full ${isSwitchOn ? 'hover:shadow-[0_40px_80px_rgba(34,197,94,0.1)]' : 'hover:shadow-[0_40px_80px_rgba(220,38,38,0.1)]'} transition-all duration-700`}>
                 <h3 className="text-2xl font-black mb-8 flex items-center gap-3">
@@ -82,9 +98,14 @@ const AboutView = ({ SectionHeader, GlassCard, isSwitchOn, EDUCATION, ORGS }) =>
                 </div>
               </GlassCard>
             </TiltCard>
-          </ScrollReveal>
+          </motion.div>
 
-          <ScrollReveal delay={0.2}>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ type: "spring", stiffness: 200, damping: 25, delay: 0.2 }}
+          >
             <TiltCard>
               <GlassCard className={`p-8 md:p-10 h-full ${isSwitchOn ? 'hover:shadow-[0_40px_80px_rgba(34,197,94,0.1)]' : 'hover:shadow-[0_40px_80px_rgba(220,38,38,0.1)]'} transition-all duration-700`}>
                 <h3 className="text-2xl font-black mb-8 flex items-center gap-3">
@@ -104,11 +125,16 @@ const AboutView = ({ SectionHeader, GlassCard, isSwitchOn, EDUCATION, ORGS }) =>
                 </ul>
               </GlassCard>
             </TiltCard>
-          </ScrollReveal>
+          </motion.div>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-          <ScrollReveal delay={0.1}>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ type: "spring", stiffness: 200, damping: 25, delay: 0.1 }}
+          >
             <TiltCard>
               <GlassCard className={`p-8 md:p-10 h-full ${isSwitchOn ? 'hover:shadow-[0_40px_80px_rgba(34,197,94,0.1)]' : 'hover:shadow-[0_40px_80px_rgba(220,38,38,0.1)]'} transition-all duration-700`}>
                 <h3 className="text-2xl font-black mb-8 flex items-center gap-3">
@@ -128,9 +154,14 @@ const AboutView = ({ SectionHeader, GlassCard, isSwitchOn, EDUCATION, ORGS }) =>
                 </div>
               </GlassCard>
             </TiltCard>
-          </ScrollReveal>
+          </motion.div>
 
-          <ScrollReveal delay={0.2}>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ type: "spring", stiffness: 200, damping: 25, delay: 0.2 }}
+          >
             <TiltCard>
               <GlassCard className={`p-8 md:p-10 h-full ${isSwitchOn ? 'hover:shadow-[0_40px_80px_rgba(34,197,94,0.1)]' : 'hover:shadow-[0_40px_80px_rgba(220,38,38,0.1)]'} transition-all duration-700`}>
                 <h3 className="text-2xl font-black mb-8 flex items-center gap-3">
@@ -153,7 +184,7 @@ const AboutView = ({ SectionHeader, GlassCard, isSwitchOn, EDUCATION, ORGS }) =>
                 </ul>
               </GlassCard>
             </TiltCard>
-          </ScrollReveal>
+          </motion.div>
         </div>
       )}
     </motion.div>

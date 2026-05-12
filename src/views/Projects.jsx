@@ -5,10 +5,10 @@ import { ScrollReveal } from './Home';
 
 const ProjectsView = ({ PROJECTS, SectionHeader, ProjectCard, isSwitchOn }) => (
   <motion.div 
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    exit={{ opacity: 0, y: -20 }}
-    transition={{ duration: 0.6 }}
+    initial={{ opacity: 0, scale: 0.95, y: 30 }}
+    animate={{ opacity: 1, scale: 1, y: 0 }}
+    exit={{ opacity: 0, scale: 0.95, y: -30 }}
+    transition={{ type: "spring", stiffness: 200, damping: 20 }}
     className="max-w-7xl mx-auto px-6 py-10"
   >
     <SectionHeader title="All Projects." subtitle="A deep dive into my technical executions, spanning front-end web apps to Unity game development." icon={<Code size={32} />} isSwitchOn={isSwitchOn} />

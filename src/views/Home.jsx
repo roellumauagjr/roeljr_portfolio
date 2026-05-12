@@ -5,28 +5,23 @@ import TiltCard from '../components/animation/TiltCard';
 import TextReveal from '../components/animation/TextReveal';
 import Magnetic from '../components/animation/Magnetic';
 
-// Reusable ScrollReveal — uses CSS animation to avoid 3D stacking context conflicts
-export const ScrollReveal = ({ children, delay = 0 }) => (
-  <div
-    style={{
-      animation: `revealUp 0.8s cubic-bezier(0.21, 0.47, 0.32, 0.98) ${delay}s both`,
-    }}
-  >
-    {children}
-  </div>
-);
 
 const HomeView = ({ setActiveTab, PROJECTS, ARTWORKS, CERTS, ProjectCard, ArtworksView, CertCard, isSwitchOn }) => {
   return (
     <motion.div 
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      transition={{ duration: 0.6 }}
+      initial={{ opacity: 0, scale: 0.95, y: 30 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      exit={{ opacity: 0, scale: 0.95, y: -30 }}
+      transition={{ type: "spring", stiffness: 200, damping: 20 }}
       className="space-y-32 pb-20"
     >
       {/* 1. HERO SECTION */}
-      <ScrollReveal>
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ type: "spring", stiffness: 200, damping: 25 }}
+      >
         <div className="max-w-7xl mx-auto px-6 pt-10 flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-20">
           
           <motion.div layout layoutId="hero-content-container" className="flex-1 text-center md:text-left z-10 flex flex-col items-center md:items-start">
@@ -86,27 +81,31 @@ const HomeView = ({ setActiveTab, PROJECTS, ARTWORKS, CERTS, ProjectCard, Artwor
             </motion.div>
           </TiltCard>
         </div>
-      </ScrollReveal>
+      </motion.div>
 
       {/* 2. PREVIEW: PROJECTS */}
       {PROJECTS.length > 0 && (
         <div className="max-w-7xl mx-auto px-6">
-          <ScrollReveal>
-            <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-10 gap-6">
-              <div>
-                <h2 className="text-3xl font-black uppercase flex items-center gap-3">
-                  <span className={`p-2 ${isSwitchOn ? 'bg-green-600/10 text-green-600' : 'bg-red-600/10 text-red-600'} rounded-full`}><Code size={24} /></span>
-                  Latest Projects
-                </h2>
-              </div>
-              <button 
-                onClick={() => setActiveTab('projects')}
-                className={`flex items-center gap-2 px-6 py-3 bg-white/60 backdrop-blur-md border border-white/80 rounded-full ${isSwitchOn ? 'text-green-600 hover:bg-green-600' : 'text-red-600 hover:bg-red-600'} font-bold hover:text-white transition-all shadow-sm hover:-translate-y-1`}
-              >
-                SEE ALL PROJECTS <ArrowRight size={18} />
-              </button>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ type: "spring", stiffness: 200, damping: 25 }}
+            className="flex flex-col md:flex-row justify-between items-center md:items-end mb-10 gap-6"
+          >
+            <div>
+              <h2 className="text-3xl font-black uppercase flex items-center gap-3">
+                <span className={`p-2 ${isSwitchOn ? 'bg-green-600/10 text-green-600' : 'bg-red-600/10 text-red-600'} rounded-full`}><Code size={24} /></span>
+                Latest Projects
+              </h2>
             </div>
-          </ScrollReveal>
+            <button 
+              onClick={() => setActiveTab('projects')}
+              className={`flex items-center gap-2 px-6 py-3 bg-white/60 backdrop-blur-md border border-white/80 rounded-full ${isSwitchOn ? 'text-green-600 hover:bg-green-600' : 'text-red-600 hover:bg-red-600'} font-bold hover:text-white transition-all shadow-sm hover:-translate-y-1`}
+            >
+              SEE ALL PROJECTS <ArrowRight size={18} />
+            </button>
+          </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {PROJECTS.slice(0, 3).map((proj, i) => <ProjectCard key={i} proj={proj} index={i} />)}
           </div>
@@ -116,22 +115,26 @@ const HomeView = ({ setActiveTab, PROJECTS, ARTWORKS, CERTS, ProjectCard, Artwor
       {/* 3. PREVIEW: ARTWORKS */}
       {Object.values(ARTWORKS).some(cat => cat && cat.length > 0) && (
         <div className="max-w-7xl mx-auto px-6">
-          <ScrollReveal>
-            <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-10 gap-6">
-              <div>
-                <h2 className="text-3xl font-black uppercase flex items-center gap-3">
-                  <span className={`p-2 ${isSwitchOn ? 'bg-green-600/10 text-green-600' : 'bg-[#121212]/10 text-[#121212]'} rounded-full`}>{isSwitchOn ? <LayoutTemplate size={24} /> : <Camera size={24} />}</span>
-                  Latest Artworks
-                </h2>
-              </div>
-              <button 
-                onClick={() => setActiveTab('artworks')}
-                className={`flex items-center gap-2 px-6 py-3 bg-white/60 backdrop-blur-md border border-white/80 rounded-full ${isSwitchOn ? 'text-green-600 hover:bg-green-600' : 'text-[#121212] hover:bg-[#121212]'} font-bold hover:text-white transition-all shadow-sm hover:-translate-y-1`}
-              >
-                EXPLORE GALLERY <ArrowRight size={18} />
-              </button>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ type: "spring", stiffness: 200, damping: 25 }}
+            className="flex flex-col md:flex-row justify-between items-center md:items-end mb-10 gap-6"
+          >
+            <div>
+              <h2 className="text-3xl font-black uppercase flex items-center gap-3">
+                <span className={`p-2 ${isSwitchOn ? 'bg-green-600/10 text-green-600' : 'bg-[#121212]/10 text-[#121212]'} rounded-full`}>{isSwitchOn ? <LayoutTemplate size={24} /> : <Camera size={24} />}</span>
+                Latest Artworks
+              </h2>
             </div>
-          </ScrollReveal>
+            <button 
+              onClick={() => setActiveTab('artworks')}
+              className={`flex items-center gap-2 px-6 py-3 bg-white/60 backdrop-blur-md border border-white/80 rounded-full ${isSwitchOn ? 'text-green-600 hover:bg-green-600' : 'text-[#121212] hover:bg-[#121212]'} font-bold hover:text-white transition-all shadow-sm hover:-translate-y-1`}
+            >
+              EXPLORE GALLERY <ArrowRight size={18} />
+            </button>
+          </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {(isSwitchOn 
               ? ARTWORKS['GRAPHIC DESIGN']?.slice(0, 3).map(art => ({ ...art, label: 'GRAPHIC DESIGN' }))
@@ -143,7 +146,13 @@ const HomeView = ({ setActiveTab, PROJECTS, ARTWORKS, CERTS, ProjectCard, Artwor
             ).map((art, i) => {
               const Icon = art.icon;
               return (
-                <ScrollReveal key={i} delay={i * 0.1}>
+                <motion.div 
+                  key={i} 
+                  initial={{ opacity: 0, scale: 0.9, y: 30 }}
+                  whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ type: "spring", stiffness: 200, damping: 20, delay: i * 0.1 }}
+                >
                   <div 
                     onClick={() => art.link && window.open(art.link, '_blank')}
                     className={`group relative flex flex-col rounded-[1.5rem] overflow-hidden border-2 ${isSwitchOn ? 'border-green-600 shadow-[0_8px_30px_rgba(34,197,94,0.15)] hover:shadow-[0_20px_50px_rgba(34,197,94,0.3)]' : 'border-red-600 shadow-[0_8px_30px_rgba(220,38,38,0.15)] hover:shadow-[0_20px_50px_rgba(220,38,38,0.3)]'} hover:-translate-y-2 transition-all duration-500 cursor-pointer`}
@@ -174,7 +183,7 @@ const HomeView = ({ setActiveTab, PROJECTS, ARTWORKS, CERTS, ProjectCard, Artwor
                       </div>
                     </div>
                   </div>
-                </ScrollReveal>
+                </motion.div>
               );
             })}
           </div>
@@ -184,20 +193,24 @@ const HomeView = ({ setActiveTab, PROJECTS, ARTWORKS, CERTS, ProjectCard, Artwor
       {/* 4. PREVIEW: CERTIFICATIONS */}
       {CERTS.length > 0 && (
         <div className="max-w-5xl mx-auto px-6">
-           <ScrollReveal>
-             <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-10 gap-6">
-              <h2 className="text-3xl font-black uppercase flex items-center gap-3">
-                <span className={`p-2 ${isSwitchOn ? 'bg-green-600/10 text-green-600' : 'bg-red-600/10 text-red-600'} rounded-full`}><Award size={24} /></span> 
-                Certifications
-              </h2>
-              <button 
-                onClick={() => setActiveTab('certifications')}
-                className={`flex items-center gap-2 px-6 py-3 bg-white/60 backdrop-blur-md border border-white/80 rounded-full ${isSwitchOn ? 'text-green-600 hover:bg-green-600' : 'text-red-600 hover:bg-red-600'} font-bold hover:text-white transition-all shadow-sm hover:-translate-y-1`}
-              >
-                VIEW ALL <ArrowRight size={18} />
-              </button>
-            </div>
-          </ScrollReveal>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ type: "spring", stiffness: 200, damping: 25 }}
+            className="flex flex-col md:flex-row justify-between items-center md:items-end mb-10 gap-6"
+          >
+            <h2 className="text-3xl font-black uppercase flex items-center gap-3">
+              <span className={`p-2 ${isSwitchOn ? 'bg-green-600/10 text-green-600' : 'bg-red-600/10 text-red-600'} rounded-full`}><Award size={24} /></span> 
+              Certifications
+            </h2>
+            <button 
+              onClick={() => setActiveTab('certifications')}
+              className={`flex items-center gap-2 px-6 py-3 bg-white/60 backdrop-blur-md border border-white/80 rounded-full ${isSwitchOn ? 'text-green-600 hover:bg-green-600' : 'text-red-600 hover:bg-red-600'} font-bold hover:text-white transition-all shadow-sm hover:-translate-y-1`}
+            >
+              VIEW ALL <ArrowRight size={18} />
+            </button>
+          </motion.div>
           <div className="space-y-6">
             {CERTS.slice(0, 2).map((cert, i) => <CertCard key={i} cert={cert} index={i} />)}
           </div>

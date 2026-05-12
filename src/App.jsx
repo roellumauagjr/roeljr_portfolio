@@ -313,7 +313,18 @@ const GlassCard = ({ children, className = "" }) => {
 };
 
 const ProjectCard = ({ proj, index = 0, isGreen }) => (
-  <ScrollReveal delay={index * 0.1}>
+  <motion.div
+    initial={{ opacity: 0, y: 50, scale: 0.9 }}
+    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+    viewport={{ once: true }}
+    transition={{ 
+      type: "spring", 
+      stiffness: 260, 
+      damping: 20, 
+      delay: index * 0.1 
+    }}
+    className="h-full"
+  >
     <TiltCard className="h-full">
       <motion.div layout layoutId={`card-${proj.title}`} whileHover={{ y: -5 }} transition={{ type: "spring", stiffness: 300, damping: 20 }} className="h-full">
         <GlassCard className={`group cursor-pointer h-full flex flex-col hover:shadow-[0_40px_80px_rgba(${isGreen ? '34,197,94' : '220,38,38'},0.15)] transition-all duration-700`}>
@@ -347,11 +358,22 @@ const ProjectCard = ({ proj, index = 0, isGreen }) => (
         </GlassCard>
       </motion.div>
     </TiltCard>
-  </ScrollReveal>
+  </motion.div>
 );
 
 const CertCard = ({ cert, index = 0, isGreen }) => (
-  <ScrollReveal delay={index * 0.1}>
+  <motion.div
+    initial={{ opacity: 0, x: -50 }}
+    whileInView={{ opacity: 1, x: 0 }}
+    viewport={{ once: true }}
+    transition={{ 
+      type: "spring", 
+      stiffness: 200, 
+      damping: 20, 
+      delay: index * 0.1 
+    }}
+    className="h-full"
+  >
     <TiltCard className="h-full">
       <motion.div layout layoutId={`cert-${cert.title}`} className="h-full">
         <GlassCard className={`relative p-6 md:p-8 ${isGreen ? 'hover:border-green-600/30 hover:shadow-[0_40px_80px_rgba(34,197,94,0.1)]' : 'hover:border-red-600/30 hover:shadow-[0_40px_80px_rgba(220,38,38,0.1)]'} transition-all duration-700 group flex flex-col md:flex-row items-start md:items-center gap-6 h-full`}>
@@ -377,29 +399,31 @@ const CertCard = ({ cert, index = 0, isGreen }) => (
       </GlassCard>
     </motion.div>
     </TiltCard>
-  </ScrollReveal>
+  </motion.div>
 );
 
 const SectionHeader = ({ title, subtitle, icon, isGreen }) => (
-  <ScrollReveal>
-    <motion.div 
-      layout 
-      layoutId={`header-${title}`}
-      className="mb-12 flex flex-col items-center text-center"
-    >
-      <motion.div layout layoutId={`accent-${title}`} className={`w-12 h-1.5 ${isGreen ? 'bg-green-600' : 'bg-red-600'} rounded-full mb-8`}></motion.div>
-      <div className="flex items-center gap-4 mb-4">
-        <motion.span layout layoutId={`icon-${title}`} className={`p-4 ${isGreen ? 'bg-green-600/10 text-green-600' : 'bg-red-600/10 text-red-600'} rounded-full`}>{icon}</motion.span>
-        <motion.h2 layout className="text-4xl md:text-5xl font-black tracking-tighter uppercase">{title}</motion.h2>
-      </div>
-      <motion.p layout className="text-lg text-[#121212]/60 font-medium max-w-2xl">{subtitle}</motion.p>
-    </motion.div>
-  </ScrollReveal>
+  <motion.div 
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] }}
+    layout 
+    layoutId={`header-${title}`}
+    className="mb-12 flex flex-col items-center text-center"
+  >
+    <motion.div layout layoutId={`accent-${title}`} className={`w-12 h-1.5 ${isGreen ? 'bg-green-600' : 'bg-red-600'} rounded-full mb-8`}></motion.div>
+    <div className="flex items-center gap-4 mb-4">
+      <motion.span layout layoutId={`icon-${title}`} className={`p-4 ${isGreen ? 'bg-green-600/10 text-green-600' : 'bg-red-600/10 text-red-600'} rounded-full`}>{icon}</motion.span>
+      <motion.h2 layout className="text-4xl md:text-5xl font-black tracking-tighter uppercase">{title}</motion.h2>
+    </div>
+    <motion.p layout className="text-lg text-[#121212]/60 font-medium max-w-2xl">{subtitle}</motion.p>
+  </motion.div>
 );
 
 const navLinks = ['home', 'projects', 'artworks', 'certifications', 'about'];
 
-const ThemeLayout = ({ morphTransitionRef }) => {
+const ThemeLayout = () => {
   const { theme, page } = useParams();
   const isGreen = theme === 'adrian';
   const navigate = useNavigate();
@@ -424,23 +448,12 @@ const ThemeLayout = ({ morphTransitionRef }) => {
   const getThemeBg = () => isGreen ? 'bg-green-600' : 'bg-red-600';
   const getThemeSelection = () => isGreen ? 'selection:bg-green-600' : 'selection:bg-red-600';
 
-  const handleThemeSwitch = (e) => {
+  const handleThemeSwitch = () => {
     const nextState = !isSwitchOn;
-    const targetColor = nextState ? 0x22c55e : 0xdc2626;
-
     setIsSwitchOn(nextState);
 
-    // Trigger the procedural morph transition
-    if (morphTransitionRef.current) {
-      morphTransitionRef.current.trigger(e.clientX, e.clientY, targetColor, () => {
-        // Change route to trigger the re-render and Framer Motion layout morphs
-        const newPath = nextState ? '/adrian' : '/roeljr';
-        navigate(`${newPath}/${currentPage}`);
-      });
-    } else {
-      const newPath = nextState ? '/adrian' : '/roeljr';
-      navigate(`${newPath}/${currentPage}`);
-    }
+    const newPath = nextState ? '/adrian' : '/roeljr';
+    navigate(`${newPath}/${currentPage}`, { replace: true });
   };
 
   const PROJECTS_DATA = isGreen ? PROJECTS_GREEN : PROJECTS;
@@ -507,24 +520,31 @@ const ThemeLayout = ({ morphTransitionRef }) => {
           <main className="flex-grow relative z-10 pt-32">
             <AnimatePresence mode="wait">
               {currentPage === 'home' && (
-                <HomeView key="home" setActiveTab={setActiveTab} PROJECTS={PROJECTS_DATA} ARTWORKS={ARTWORKS_DATA} CERTS={CERTS_DATA} ProjectCard={(props) => <ProjectCard {...props} isGreen={isGreen} />} CertCard={(props) => <CertCard {...props} isGreen={isGreen} />} isSwitchOn={isGreen} />
+                <HomeView key={`home-${isGreen}`} setActiveTab={setActiveTab} PROJECTS={PROJECTS_DATA} ARTWORKS={ARTWORKS_DATA} CERTS={CERTS_DATA} ProjectCard={(props) => <ProjectCard {...props} isGreen={isGreen} />} CertCard={(props) => <CertCard {...props} isGreen={isGreen} />} isSwitchOn={isGreen} />
               )}
               {currentPage === 'projects' && (
-                <ProjectsView key="projects" PROJECTS={PROJECTS_DATA} SectionHeader={(props) => <SectionHeader {...props} isGreen={isGreen} />} ProjectCard={(props) => <ProjectCard {...props} isGreen={isGreen} />} isSwitchOn={isGreen} />
+                <ProjectsView key={`projects-${isGreen}`} PROJECTS={PROJECTS_DATA} SectionHeader={(props) => <SectionHeader {...props} isGreen={isGreen} />} ProjectCard={(props) => <ProjectCard {...props} isGreen={isGreen} />} isSwitchOn={isGreen} />
               )}
               {currentPage === 'about' && (
-                <AboutView key="about" SectionHeader={(props) => <SectionHeader {...props} isGreen={isGreen} />} GlassCard={GlassCard} isSwitchOn={isGreen} EDUCATION={EDUCATION_DATA} ORGS={ORGS_DATA} />
+                <AboutView key={`about-${isGreen}`} SectionHeader={(props) => <SectionHeader {...props} isGreen={isGreen} />} GlassCard={GlassCard} isSwitchOn={isGreen} EDUCATION={EDUCATION_DATA} ORGS={ORGS_DATA} />
               )}
               {currentPage === 'artworks' && (
-                <ArtworksView key="artworks" ARTWORKS={ARTWORKS_DATA} SectionHeader={(props) => <SectionHeader {...props} isGreen={isGreen} />} isSwitchOn={isGreen} />
+                <ArtworksView key={`artworks-${isGreen}`} ARTWORKS={ARTWORKS_DATA} SectionHeader={(props) => <SectionHeader {...props} isGreen={isGreen} />} isSwitchOn={isGreen} />
               )}
               {currentPage === 'certifications' && (
-                <div key="certifications" style={{ animation: 'revealUp 0.6s cubic-bezier(0.21, 0.47, 0.32, 0.98) both' }} className="max-w-5xl mx-auto px-6 py-10">
+                <motion.div 
+                  key={`certs-${isGreen}`} 
+                  initial={{ opacity: 0, scale: 0.9, y: 30 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.9, y: -30 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                  className="max-w-5xl mx-auto px-6 py-10"
+                >
                   <SectionHeader title="Certifications." subtitle="Professional certifications and credentials." icon={<Award size={32} />} isGreen={isGreen} />
                   <div className="space-y-6 mt-16">
                     {CERTS_DATA.map((cert, i) => <CertCard key={i} cert={cert} index={i} isGreen={isGreen} />)}
                   </div>
-                </div>
+                </motion.div>
               )}
             </AnimatePresence>
           </main>
@@ -557,12 +577,9 @@ const App = () => {
   }, [location.pathname, navigate]);
 
   return (
-    <>
-      <MorphTransition ref={morphTransitionRef} />
-      <Routes>
-        <Route path="/:theme/:page?" element={<ThemeLayout morphTransitionRef={morphTransitionRef} />} />
-      </Routes>
-    </>
+    <Routes>
+      <Route path="/:theme/:page?" element={<ThemeLayout />} />
+    </Routes>
   );
 };
 
