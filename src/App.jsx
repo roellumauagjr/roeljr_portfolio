@@ -9,7 +9,7 @@ import {
 
 import SmoothScroll from './components/animation/SmoothScroll';
 import Background from './components/animation/Background';
-import HomeView, { ScrollReveal } from './views/Home';
+import HomeView from './views/Home';
 import ProjectsView from './views/Projects';
 import AboutView from './views/About';
 import ArtworksView from './views/Artworks';

@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Code } from 'lucide-react';
-import { ScrollReveal } from './Home';
 
 const ProjectsView = ({ PROJECTS, SectionHeader, ProjectCard, isSwitchOn }) => (
   <motion.div 
