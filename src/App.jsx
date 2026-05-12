@@ -3,7 +3,8 @@ import { Routes, Route, useLocation, useNavigate, useParams } from 'react-router
 import { AnimatePresence, motion } from 'framer-motion';
 import { 
   Mail, ExternalLink, Camera, Code, 
-  Award, BadgeCheck, Video, LayoutTemplate
+  Award, BadgeCheck, Video, LayoutTemplate,
+  Smartphone, Monitor
 } from 'lucide-react';
 
 import SmoothScroll from './components/animation/SmoothScroll';
@@ -15,7 +16,7 @@ import ArtworksView from './views/Artworks';
 import TiltCard from './components/animation/TiltCard';
 import Magnetic from './components/animation/Magnetic';
 import OpeningSequence from './components/animation/OpeningSequence';
-import VoxelTransition from './components/animation/VoxelTransition';
+import MorphTransition from './components/animation/MorphTransition';
 
 const Github = (props) => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -40,23 +41,23 @@ const PROJECTS = [
     link: 'https://www.figma.com/design/eoCMB5QWDHKW60tIxSeMoF/Ahmoree-Productions?node-id=0-1&t=2iqZFBAIyiirLyXx-1'
   },
   { title: 'LibraNet', category: 'Computer Programming 2', desc: 'Desktop library management system that automates book borrowing and inventory tracking. Developed using Java. Role: Solo Programmer.', color: 'bg-red-600/5' },
-  { title: 'QuickServe', category: 'Software Engineering', desc: 'Web-based point-of-sale dashboard designed to streamline order-taking for restaurants using manual processes. Developed using HTML & CSS. Role: Partnered Programmer.', color: 'bg-red-600/5' },
-  { title: 'Twin Fall', category: 'Game Programming', desc: 'Narrative-based game where a character travels between underworld and overworld realms to reunite with its twin, Luna. Role: Creative Director & Lead Artist.', color: 'bg-red-600/5' },
-  { title: 'Mango Shake Simulator', category: 'Game Programming 2', desc: '3D simulator game where players act as a mango shake vendor and must meet daily order quotas to progress. Role: 3D Artist.', color: 'bg-red-600/5' },
+  { title: 'QuickServe', link: 'https://github.com/condeadriankeith/QuickServe', category: 'Software Engineering', desc: 'Web-based point-of-sale dashboard designed to streamline order-taking for restaurants using manual processes. Developed using HTML & CSS. Role: Partnered Programmer.', color: 'bg-red-600/5' },
+  { title: 'Twin Fall', iconType: 'desktop', category: 'Game Programming', desc: 'Narrative-based game where a character travels between underworld and overworld realms to reunite with its twin, Luna. Role: Creative Director & Lead Artist.', color: 'bg-red-600/5' },
+  { title: 'Mango Shake Simulator', iconType: 'desktop', category: 'Game Programming 2', desc: '3D simulator game where players act as a mango shake vendor and must meet daily order quotas to progress. Role: 3D Artist.', color: 'bg-red-600/5' },
   { title: 'Galaxias Mania', category: 'Game Technology', desc: '2D mobile space shooter focused on achieving high scores and surviving continuous enemy attacks. Role: Game Developer.', color: 'bg-red-600/5' },
-  { title: 'HAVEN - Emergency Response', category: 'Full Stack Development', desc: 'Real-time emergency response system where mobile user reports instantly trigger alerts on a desktop dashboard. Role: Front-End Developer; assisted with Back-End.', color: 'bg-red-600/5' },
-  { title: 'Renthing - Rental Marketplace', category: 'Startup Project', desc: 'Rental marketplace platform promoting access over ownership. Role: Front-End & Back-End Developer; UI/UX Designer.', color: 'bg-red-600/5' },
+  { title: 'HAVEN - Emergency Response', link: 'https://github.com/condeadriankeith/HAVEN', category: 'Full Stack Development', desc: 'Real-time emergency response system where mobile user reports instantly trigger alerts on a desktop dashboard. Role: Front-End Developer; assisted with Back-End.', color: 'bg-red-600/5' },
+  { title: 'Renthing - Rental Marketplace', link: 'https://github.com/condeadriankeith/RenThing', category: 'Startup Project', desc: 'Rental marketplace platform promoting access over ownership. Role: Front-End & Back-End Developer; UI/UX Designer.', color: 'bg-red-600/5' },
   { title: 'Prospera.AI', category: 'Technopreneurship', desc: 'AI-powered mobile wallet application promoting smarter financial management using artificial intelligence. Role: UI/UX Artist.', color: 'bg-red-600/5' },
   { title: 'MJIPHIL Construction', category: 'Cloud-Based App Development', desc: 'Web-based digital inventory and catalog system developed to replace manual inventory counting processes. Role: UI/UX Artist.', color: 'bg-red-600/5' },
 ];
 
 const PROJECTS_GREEN = [
-  { title: 'QuickServe', category: 'Software Engineering', desc: 'Web-based POS dashboard for restaurants. Role: Partnered Programmer.', color: 'bg-green-600/5' },
-  { title: 'Galaxias Mania', category: 'Game Technology', desc: '2D mobile space shooter. Role: Game Developer.', color: 'bg-green-600/5' },
-  { title: 'HAVEN - Emergency Response', category: 'Full Stack Development', desc: 'Real-time emergency response system. Role: Front-End & Back-End Developer.', color: 'bg-green-600/5' },
-  { title: 'ParkWise', category: 'Computer Programming 2', desc: 'Smart parking management system using C++ (Qt). Role: Full Stack Developer.', color: 'bg-green-600/5' },
-  { title: 'Renthing - Rental Marketplace', category: 'Startup Project', desc: 'DTI Moonshot Startup Competition finalist. Role: Front-End & Back-End Developer; UI/UX Designer.', color: 'bg-green-600/5' },
-  { title: 'Prospera.AI', category: 'Technopreneurship', desc: 'AI-powered mobile wallet with expense tracking, AI chatbot, and savings envelopes. Role: UI/UX Artist.', color: 'bg-green-600/5' }
+  { title: 'QuickServe', link: 'https://github.com/condeadriankeith/QuickServe', category: 'Software Engineering', desc: 'Web-based POS dashboard for restaurants. Role: Partnered Programmer.', color: 'bg-green-600/5' },
+  { title: 'Galaxias Mania', iconType: 'mobile', category: 'Game Technology', desc: '2D mobile space shooter. Role: Game Developer.', color: 'bg-green-600/5' },
+  { title: 'HAVEN - Emergency Response', link: 'https://github.com/condeadriankeith/HAVEN', category: 'Full Stack Development', desc: 'Real-time emergency response system. Role: Front-End & Back-End Developer.', color: 'bg-green-600/5' },
+  { title: 'ParkWise', link: 'https://github.com/condeadriankeith/ParkWise', category: 'Computer Programming 2', desc: 'Smart parking management system using C++ (Qt). Role: Full Stack Developer.', color: 'bg-green-600/5' },
+  { title: 'Renthing - Rental Marketplace', link: 'https://github.com/condeadriankeith/RenThing', category: 'Startup Project', desc: 'DTI Moonshot Startup Competition finalist. Role: Front-End & Back-End Developer; UI/UX Designer.', color: 'bg-green-600/5' },
+  { title: 'Prospera.AI', iconType: 'mobile', category: 'Technopreneurship', desc: 'AI-powered mobile wallet with expense tracking, AI chatbot, and savings envelopes. Role: UI/UX Artist.', color: 'bg-green-600/5' }
 ];
 
 const CERTS = [
@@ -73,7 +74,7 @@ const CERTS_GREEN = [
 ];
 
 const ARTWORKS = {
-  PHOTOS: [ { title: 'USLS 69th Graduation Rites', type: 'Photography', icon: Camera, image: '/USLS69THGraduationRites.jpg', link: 'https://www.facebook.com/share/p/1ECnSDSLkr/' }, { title: 'Urban Solitude', type: 'Street', icon: Camera }, { title: 'Neon Reflections', type: 'Night', icon: Camera }, { title: 'Golden Hour Stills', type: 'Portrait', icon: Camera } ],
+  PHOTOS: [ { title: 'USLS 69th Graduation Rites', type: 'Photography', icon: Camera, image: '/USLS69THGraduationRites.jpg', link: 'https://www.facebook.com/share/p/1ECnSDSLkr/' }, { title: 'LICEO 9th GRADUATION RITES', type: 'Photography', icon: Camera, image: '/LICEO9THGraduationRites.jpg', link: 'https://www.facebook.com/share/p/1GQURr1C2p/' }, { title: 'LICEO 9th GRADUATION RITES', type: 'Photography', icon: Camera, image: '/LICEO9THGraduationRites_2.jpg', link: 'https://www.facebook.com/share/p/17NHVDMW5f/' } ],
   VIDEOS: [ { title: 'Nature in Motion', type: 'Short Film', icon: Video }, { title: 'Event Highlights 2023', type: 'Recap', icon: Video } ],
   'GRAPHIC DESIGN': [ { title: 'Minimalist UI Concept', type: 'Web Design', icon: LayoutTemplate }, { title: 'Magazine Spread', type: 'Print', icon: LayoutTemplate }, { title: 'Brand Identity', type: 'Graphics', icon: LayoutTemplate } ]
 };
@@ -314,13 +315,21 @@ const GlassCard = ({ children, className = "" }) => {
 const ProjectCard = ({ proj, index = 0, isGreen }) => (
   <ScrollReveal delay={index * 0.1}>
     <TiltCard className="h-full">
-      <motion.div whileHover={{ y: -5 }} transition={{ type: "spring", stiffness: 300, damping: 20 }} className="h-full">
+      <motion.div layout layoutId={`card-${proj.title}`} whileHover={{ y: -5 }} transition={{ type: "spring", stiffness: 300, damping: 20 }} className="h-full">
         <GlassCard className={`group cursor-pointer h-full flex flex-col hover:shadow-[0_40px_80px_rgba(${isGreen ? '34,197,94' : '220,38,38'},0.15)] transition-all duration-700`}>
           <div onClick={() => proj.link && window.open(proj.link, '_blank')} className={`h-56 ${proj.color || (isGreen ? 'bg-green-600/5' : 'bg-red-600/5')} relative overflow-hidden flex items-center justify-center flex-shrink-0`}>
             {proj.image ? (
               <img src={proj.image} alt={proj.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
             ) : (
-              <span className="text-white/30 font-black text-2xl uppercase tracking-widest z-10">{proj.title}</span>
+              <>
+                {proj.iconType === 'mobile' ? (
+                  <Smartphone className="w-20 h-20 text-white/30 z-10" />
+                ) : proj.iconType === 'desktop' ? (
+                  <Monitor className="w-20 h-20 text-white/30 z-10" />
+                ) : (
+                  <Github className="w-20 h-20 text-white/30 z-10" />
+                )}
+              </>
             )}
             <div className="absolute inset-0 bg-[#121212]/10 group-hover:bg-transparent transition-colors duration-500" />
             <motion.div className="absolute -bottom-10 -right-10 w-32 h-32 bg-white/10 rounded-full blur-xl" whileHover={{ scale: 3, x: -20, y: -20 }} transition={{ type: "spring", stiffness: 100 }} />
@@ -344,7 +353,8 @@ const ProjectCard = ({ proj, index = 0, isGreen }) => (
 const CertCard = ({ cert, index = 0, isGreen }) => (
   <ScrollReveal delay={index * 0.1}>
     <TiltCard className="h-full">
-      <GlassCard className={`relative p-6 md:p-8 ${isGreen ? 'hover:border-green-600/30 hover:shadow-[0_40px_80px_rgba(34,197,94,0.1)]' : 'hover:border-red-600/30 hover:shadow-[0_40px_80px_rgba(220,38,38,0.1)]'} transition-all duration-700 group flex flex-col md:flex-row items-start md:items-center gap-6 h-full`}>
+      <motion.div layout layoutId={`cert-${cert.title}`} className="h-full">
+        <GlassCard className={`relative p-6 md:p-8 ${isGreen ? 'hover:border-green-600/30 hover:shadow-[0_40px_80px_rgba(34,197,94,0.1)]' : 'hover:border-red-600/30 hover:shadow-[0_40px_80px_rgba(220,38,38,0.1)]'} transition-all duration-700 group flex flex-col md:flex-row items-start md:items-center gap-6 h-full`}>
         <div className="relative z-10 flex-shrink-0">
           <div className={`w-16 h-16 ${isGreen ? 'bg-green-600/10 text-green-600 group-hover:bg-green-600' : 'bg-red-600/10 text-red-600 group-hover:bg-red-600'} rounded-full flex items-center justify-center group-hover:text-white transition-colors duration-500`}>
             <BadgeCheck size={32} />
@@ -365,36 +375,41 @@ const CertCard = ({ cert, index = 0, isGreen }) => (
           </div>
         </div>
       </GlassCard>
+    </motion.div>
     </TiltCard>
   </ScrollReveal>
 );
 
 const SectionHeader = ({ title, subtitle, icon, isGreen }) => (
   <ScrollReveal>
-    <div className="mb-12 flex flex-col items-center text-center">
-      <div className={`w-12 h-1.5 ${isGreen ? 'bg-green-600' : 'bg-red-600'} rounded-full mb-8`}></div>
+    <motion.div 
+      layout 
+      layoutId={`header-${title}`}
+      className="mb-12 flex flex-col items-center text-center"
+    >
+      <motion.div layout layoutId={`accent-${title}`} className={`w-12 h-1.5 ${isGreen ? 'bg-green-600' : 'bg-red-600'} rounded-full mb-8`}></motion.div>
       <div className="flex items-center gap-4 mb-4">
-        <span className={`p-4 ${isGreen ? 'bg-green-600/10 text-green-600' : 'bg-red-600/10 text-red-600'} rounded-full`}>{icon}</span>
-        <h2 className="text-4xl md:text-5xl font-black tracking-tighter uppercase">{title}</h2>
+        <motion.span layout layoutId={`icon-${title}`} className={`p-4 ${isGreen ? 'bg-green-600/10 text-green-600' : 'bg-red-600/10 text-red-600'} rounded-full`}>{icon}</motion.span>
+        <motion.h2 layout className="text-4xl md:text-5xl font-black tracking-tighter uppercase">{title}</motion.h2>
       </div>
-      <p className="text-lg text-[#121212]/60 font-medium max-w-2xl">{subtitle}</p>
-    </div>
+      <motion.p layout className="text-lg text-[#121212]/60 font-medium max-w-2xl">{subtitle}</motion.p>
+    </motion.div>
   </ScrollReveal>
 );
 
 const navLinks = ['home', 'projects', 'artworks', 'certifications', 'about'];
 
-const ThemeLayout = ({ isGreen }) => {
+const ThemeLayout = ({ morphTransitionRef }) => {
+  const { theme, page } = useParams();
+  const isGreen = theme === 'adrian';
   const navigate = useNavigate();
   const location = useLocation();
-  const voxelTransitionRef = useRef(null);
   const [showOpening, setShowOpening] = useState(true);
   const [isSwitchOn, setIsSwitchOn] = useState(isGreen);
 
   const currentPage = useMemo(() => {
-    const path = location.pathname.split('/').pop();
-    return navLinks.includes(path) ? path : 'home';
-  }, [location.pathname]);
+    return navLinks.includes(page) ? page : 'home';
+  }, [page]);
 
   const setActiveTab = (tab) => {
     const basePath = isGreen ? '/adrian' : '/roeljr';
@@ -409,15 +424,23 @@ const ThemeLayout = ({ isGreen }) => {
   const getThemeBg = () => isGreen ? 'bg-green-600' : 'bg-red-600';
   const getThemeSelection = () => isGreen ? 'selection:bg-green-600' : 'selection:bg-red-600';
 
-  const handleThemeSwitch = async (e) => {
+  const handleThemeSwitch = (e) => {
     const nextState = !isSwitchOn;
+    const targetColor = nextState ? 0x22c55e : 0xdc2626;
+
     setIsSwitchOn(nextState);
-    await new Promise(resolve => setTimeout(resolve, 500));
-    if (voxelTransitionRef.current) {
-      await voxelTransitionRef.current.triggerTransition(e.clientX, e.clientY);
+
+    // Trigger the procedural morph transition
+    if (morphTransitionRef.current) {
+      morphTransitionRef.current.trigger(e.clientX, e.clientY, targetColor, () => {
+        // Change route to trigger the re-render and Framer Motion layout morphs
+        const newPath = nextState ? '/adrian' : '/roeljr';
+        navigate(`${newPath}/${currentPage}`);
+      });
+    } else {
+      const newPath = nextState ? '/adrian' : '/roeljr';
+      navigate(`${newPath}/${currentPage}`);
     }
-    const newPath = nextState ? '/adrian' : '/roeljr';
-    navigate(`${newPath}/${currentPage}`);
   };
 
   const PROJECTS_DATA = isGreen ? PROJECTS_GREEN : PROJECTS;
@@ -438,14 +461,18 @@ const ThemeLayout = ({ isGreen }) => {
         `}</style>
 
         {showOpening && <OpeningSequence onComplete={() => setShowOpening(false)} isGreen={isGreen} />}
-        <VoxelTransition ref={voxelTransitionRef} />
 
         <div className={`transition-all duration-700 delay-200 ${showOpening ? 'opacity-0 scale-95 h-screen overflow-hidden' : 'opacity-100 scale-100'}`}>
           <Background />
 
           <nav className="fixed top-0 w-full z-50 bg-white/50 backdrop-blur-2xl border-b border-white/60 shadow-[0_4px_30px_rgba(0,0,0,0.03)]">
             <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-              <motion.div className="text-3xl font-black tracking-tighter cursor-pointer" whileHover={{ scale: 1.05 }} onClick={() => setActiveTab('home')}>
+              <motion.div 
+                layoutId="nav-logo"
+                className="text-3xl font-black tracking-tighter cursor-pointer" 
+                whileHover={{ scale: 1.05 }} 
+                onClick={() => setActiveTab('home')}
+              >
                 {isGreen ? 'ADRIAN' : 'ROEL'} <span className={getThemeColor()}>{isGreen ? 'KEITH' : 'JR.'}</span>
               </motion.div>
               
@@ -521,6 +548,7 @@ const ThemeLayout = ({ isGreen }) => {
 const App = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const morphTransitionRef = useRef(null);
 
   useEffect(() => {
     if (location.pathname === '/' || location.pathname === '') {
@@ -529,10 +557,12 @@ const App = () => {
   }, [location.pathname, navigate]);
 
   return (
-    <Routes>
-      <Route path="/roeljr/:page?" element={<ThemeLayout isGreen={false} />} />
-      <Route path="/adrian/:page?" element={<ThemeLayout isGreen={true} />} />
-    </Routes>
+    <>
+      <MorphTransition ref={morphTransitionRef} />
+      <Routes>
+        <Route path="/:theme/:page?" element={<ThemeLayout morphTransitionRef={morphTransitionRef} />} />
+      </Routes>
+    </>
   );
 };
 

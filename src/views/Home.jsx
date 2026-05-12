@@ -29,12 +29,12 @@ const HomeView = ({ setActiveTab, PROJECTS, ARTWORKS, CERTS, ProjectCard, Artwor
       <ScrollReveal>
         <div className="max-w-7xl mx-auto px-6 pt-10 flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-20">
           
-          <motion.div layout className="flex-1 text-center md:text-left z-10 flex flex-col items-center md:items-start">
-            <motion.div layout className={`inline-flex items-center gap-2 px-5 py-2.5 ${isSwitchOn ? 'bg-green-600/10 border-green-600/20 text-green-600' : 'bg-red-600/10 border-red-600/20 text-red-600'} text-sm font-bold tracking-widest uppercase rounded-full mb-6`}>
-              <span className={`w-2.5 h-2.5 ${isSwitchOn ? 'bg-green-600' : 'bg-red-600'} rounded-full animate-pulse`} />
+          <motion.div layout layoutId="hero-content-container" className="flex-1 text-center md:text-left z-10 flex flex-col items-center md:items-start">
+            <motion.div layout layoutId="hero-badge" className={`inline-flex items-center gap-2 px-5 py-2.5 ${isSwitchOn ? 'bg-green-600/10 border-green-600/20 text-green-600' : 'bg-red-600/10 border-red-600/20 text-red-600'} text-sm font-bold tracking-widest uppercase rounded-full mb-6`}>
+              <motion.span layout layoutId="hero-badge-dot" className={`w-2.5 h-2.5 ${isSwitchOn ? 'bg-green-600' : 'bg-red-600'} rounded-full animate-pulse`} />
               Available for Internship
             </motion.div>
-            <motion.h1 layout className="text-5xl md:text-7xl lg:text-[5rem] font-black tracking-tighter leading-[1.05] mb-6">
+            <motion.h1 layout layoutId="hero-title" className="text-5xl md:text-7xl lg:text-[5rem] font-black tracking-tighter leading-[1.05] mb-6">
               <TextReveal text={isSwitchOn ? "Designing Web" : "Bridging Code"} />
               <span className={isSwitchOn ? 'text-green-600' : 'text-red-600'}><TextReveal text={isSwitchOn ? "and Experiences." : "and Canvas."} delay={0.3} /></span>
             </motion.h1>
@@ -43,10 +43,11 @@ const HomeView = ({ setActiveTab, PROJECTS, ARTWORKS, CERTS, ProjectCard, Artwor
               className="text-lg md:text-xl text-[#121212]/60 max-w-lg leading-relaxed font-medium mx-auto md:mx-0 mb-8"
               delay={0.5}
             />
-            <motion.div layout className="flex flex-wrap gap-4 pt-4 justify-center md:justify-start w-full">
+            <motion.div layout layoutId="hero-actions" className="flex flex-wrap gap-4 pt-4 justify-center md:justify-start w-full">
               <Magnetic strength={0.3}>
                 <motion.button 
                   layout
+                  layoutId="hero-btn-work"
                   onClick={() => setActiveTab('projects')}
                   className={`px-8 py-4 ${isSwitchOn ? 'bg-green-600 shadow-green-600/30 hover:shadow-green-600/50' : 'bg-red-600 shadow-red-600/30 hover:shadow-red-600/50'} text-white font-bold tracking-wide rounded-full shadow-lg hover:-translate-y-1 transition-all duration-300 flex items-center gap-2 group`}
                 >
@@ -57,6 +58,7 @@ const HomeView = ({ setActiveTab, PROJECTS, ARTWORKS, CERTS, ProjectCard, Artwor
               <Magnetic strength={0.2}>
                 <motion.a 
                   layout
+                  layoutId="hero-btn-resume"
                   href={isSwitchOn ? "/CONDE_RESUME.pdf" : "/LUMAUAG_RESUME.pdf"}
                   download={isSwitchOn ? "/CONDE_RESUME.pdf" : "/LUMAUAG_RESUME.pdf"}
                   className="px-8 py-4 bg-white/60 backdrop-blur-md text-[#121212] border border-white font-bold tracking-wide rounded-full hover:bg-[#121212] hover:text-white transition-all duration-300 flex items-center gap-2 shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:-translate-y-1"
@@ -68,9 +70,11 @@ const HomeView = ({ setActiveTab, PROJECTS, ARTWORKS, CERTS, ProjectCard, Artwor
           </motion.div>
 
           <TiltCard className="flex-1 w-full max-w-md relative group">
-            <div className={`absolute inset-0 ${isSwitchOn ? 'bg-green-600/20 group-hover:bg-green-600/30' : 'bg-red-600/20 group-hover:bg-red-600/30'} translate-x-6 translate-y-6 rounded-full blur-2xl transition-all duration-700 z-0 animate-float`}></div>
-            <div className="relative aspect-square md:aspect-[4/5] bg-white/80 backdrop-blur-xl border-8 border-white shadow-2xl rounded-[3rem] md:rounded-[4rem] overflow-hidden z-10 transition-transform duration-700 group-hover:-translate-y-2">
-              <img 
+            <motion.div layout layoutId="hero-image-glow" className={`absolute inset-0 ${isSwitchOn ? 'bg-green-600/20 group-hover:bg-green-600/30' : 'bg-red-600/20 group-hover:bg-red-600/30'} translate-x-6 translate-y-6 rounded-full blur-2xl transition-all duration-700 z-0 animate-float`}></motion.div>
+            <motion.div layout layoutId="hero-image-container" className="relative aspect-square md:aspect-[4/5] bg-white/80 backdrop-blur-xl border-8 border-white shadow-2xl rounded-[3rem] md:rounded-[4rem] overflow-hidden z-10 transition-transform duration-700 group-hover:-translate-y-2">
+              <motion.img 
+                layout
+                layoutId="hero-image-source"
                 src={isSwitchOn ? "/ADRIAN ID PICTURE.png" : "/ROEL ID PICTURE.png"} 
                 alt={isSwitchOn ? "Adrian Keith Conde" : "Roel Jr Lumauag"} 
                 className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700"
@@ -79,7 +83,7 @@ const HomeView = ({ setActiveTab, PROJECTS, ARTWORKS, CERTS, ProjectCard, Artwor
                  <User size={80} className="mb-4 opacity-50" />
                  <p className="font-bold tracking-widest uppercase">ID PICTURE</p>
               </div>
-            </div>
+            </motion.div>
           </TiltCard>
         </div>
       </ScrollReveal>
