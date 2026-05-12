@@ -74,9 +74,91 @@ const CERTS_GREEN = [
 ];
 
 const ARTWORKS = {
-  PHOTOS: [ { title: 'USLS 69th Graduation Rites', type: 'Photography', icon: Camera, image: '/USLS69THGraduationRites.jpg', link: 'https://www.facebook.com/share/p/1ECnSDSLkr/' }, { title: 'LICEO 9th GRADUATION RITES', type: 'Photography', icon: Camera, image: '/LICEO9THGraduationRites.jpg', link: 'https://www.facebook.com/share/p/1GQURr1C2p/' }, { title: 'LICEO 9th GRADUATION RITES', type: 'Photography', icon: Camera, image: '/LICEO9THGraduationRites_2.jpg', link: 'https://www.facebook.com/share/p/17NHVDMW5f/' } ],
-  VIDEOS: [ { title: 'Nature in Motion', type: 'Short Film', icon: Video }, { title: 'Event Highlights 2023', type: 'Recap', icon: Video } ],
-  'GRAPHIC DESIGN': [ { title: 'Minimalist UI Concept', type: 'Web Design', icon: LayoutTemplate }, { title: 'Magazine Spread', type: 'Print', icon: LayoutTemplate }, { title: 'Brand Identity', type: 'Graphics', icon: LayoutTemplate } ]
+  PHOTOS: [ 
+    { 
+      title: 'USG | USPLASH 2023: Apolaki', 
+      type: 'Photography - Photo Highlights', 
+      icon: Camera, 
+      image: '/assets/artworks/red/usplash/1.jpg',
+      images: [
+        '/assets/artworks/red/usplash/1.jpg',
+        '/assets/artworks/red/usplash/2.jpg',
+        '/assets/artworks/red/usplash/3.jpg',
+        '/assets/artworks/red/usplash/4.jpg',
+        '/assets/artworks/red/usplash/5.jpg',
+        '/assets/artworks/red/usplash/6.jpg',
+        '/assets/artworks/red/usplash/7.jpg'
+      ],
+      links: [
+        'https://www.facebook.com/100064761363993/posts/675724374596269/#',
+        'https://www.facebook.com/100064761363993/posts/675831634585543/#',
+        'https://www.facebook.com/100064761363993/posts/675804451254928/#',
+        'https://www.facebook.com/100064761363993/posts/676516021183771/#',
+        'https://www.facebook.com/100064761363993/posts/675815791253794/#',
+        'https://www.facebook.com/100064761363993/posts/675886394580067/#',
+        'https://www.facebook.com/100064761363993/posts/675821367919903/#'
+      ],
+      link: 'https://www.facebook.com/100064761363993/posts/675724374596269/#',
+      isModal: true
+    },
+    { 
+      title: 'KAPAWA COVERAGES', 
+      type: 'Photography - News & Events', 
+      icon: Camera, 
+      image: '/assets/artworks/red/kapawa/1.jpg',
+      images: [
+        '/assets/artworks/red/kapawa/1.jpg', '/assets/artworks/red/kapawa/2.jpg', '/assets/artworks/red/kapawa/3.jpg', 
+        '/assets/artworks/red/kapawa/4.jpg', '/assets/artworks/red/kapawa/5.jpg', '/assets/artworks/red/kapawa/6.jpg', 
+        '/assets/artworks/red/kapawa/7.jpg', '/assets/artworks/red/kapawa/8.jpg', '/assets/artworks/red/kapawa/9.jpg', 
+        '/assets/artworks/red/kapawa/10.jpg', '/assets/artworks/red/kapawa/11.jpg', '/assets/artworks/red/kapawa/12.jpg', 
+        '/assets/artworks/red/kapawa/13.jpg', '/assets/artworks/red/kapawa/14.jpg', '/assets/artworks/red/kapawa/15.jpg', 
+        '/assets/artworks/red/kapawa/16.jpg', '/assets/artworks/red/kapawa/17.jpg', '/assets/artworks/red/kapawa/18.jpg', 
+        '/assets/artworks/red/kapawa/19.jpg'
+      ],
+      links: [
+        'https://www.facebook.com/100063942127635/posts/649880103820055/#', 'https://www.facebook.com/100063942127635/posts/536246968516703/#',
+        'https://www.facebook.com/100063942127635/posts/578717630936303/#', 'https://www.facebook.com/100063942127635/posts/580944450713621/#',
+        'https://www.facebook.com/100063942127635/posts/535357805272286/#', 'https://www.facebook.com/100063942127635/posts/572512398223493/#',
+        'https://www.facebook.com/100063942127635/posts/579610740846992/#', 'https://www.facebook.com/100063942127635/posts/539807801493953/#',
+        'https://www.facebook.com/100063942127635/posts/562211115920288/#', 'https://www.facebook.com/100063942127635/posts/540370731437660/#',
+        'https://www.facebook.com/100063942127635/posts/539944111480322/#', 'https://www.facebook.com/100063942127635/posts/644233437718055/#',
+        'https://www.facebook.com/100063942127635/posts/649880590486673/#', 'https://www.facebook.com/100063942127635/posts/649880590486673/#',
+        'https://www.facebook.com/100063942127635/posts/545440984263968/#', 'https://www.facebook.com/100063942127635/posts/635823021892430/#',
+        'https://www.facebook.com/100063942127635/posts/635821325225933/#', 'https://www.facebook.com/100063942127635/posts/635822391892493/#',
+        'https://www.facebook.com/100063942127635/posts/586350986839634/#'
+      ],
+      link: 'https://www.facebook.com/100063942127635/posts/649880103820055/#',
+      isModal: true
+    },
+    { title: 'USLS 69th Graduation Rites', type: 'Photography', icon: Camera, image: '/USLS69THGraduationRites.jpg', link: 'https://www.facebook.com/share/p/1ECnSDSLkr/' }, 
+    { title: 'LICEO 9th GRADUATION RITES', type: 'Photography', icon: Camera, image: '/LICEO9THGraduationRites.jpg', link: 'https://www.facebook.com/share/p/1GQURr1C2p/' }, 
+    { title: 'LICEO 9th GRADUATION RITES', type: 'Photography', icon: Camera, image: '/LICEO9THGraduationRites_2.jpg', link: 'https://www.facebook.com/share/p/17NHVDMW5f/' } 
+  ],
+  VIDEOS: [],
+  'GRAPHIC DESIGN': [
+    { 
+      title: 'USG | USPLASH 2023: Apolaki | Thank You Sponsors', 
+      type: 'Graphic Design - Layout Artist', 
+      icon: LayoutTemplate, 
+      image: '/assets/artworks/red/usplash/sponsors/1.jpg',
+      images: [
+        '/assets/artworks/red/usplash/sponsors/1.jpg',
+        '/assets/artworks/red/usplash/sponsors/2.jpg',
+        '/assets/artworks/red/usplash/sponsors/3.jpg',
+        '/assets/artworks/red/usplash/sponsors/4.jpg'
+      ],
+      link: 'https://www.facebook.com/100064761363993/posts/676912621144111/#',
+      isModal: true
+    },
+    { 
+      title: 'USG | USPLASH 2023: Apolaki | Freshmen Walk Poster | Layout Artist', 
+      type: 'Graphic Design - Layout Artist', 
+      icon: LayoutTemplate, 
+      image: '/assets/artworks/red/usplash/freshmen_walk.jpg',
+      link: 'https://www.facebook.com/100064761363993/posts/689861289849244/#',
+      isModal: true
+    }
+  ]
 };
 
 const ARTWORKS_GREEN = {
@@ -110,7 +192,9 @@ const ARTWORKS_GREEN = {
         '/assets/artworks/green/spec-mag-preview-3-2.png',
         '/assets/artworks/green/spec-mag-preview-3-3.png',
         '/assets/artworks/green/spec-mag-preview-3-4.png'
-      ] 
+      ],
+      link: 'https://www.facebook.com/share/p/1J8ZUGtwKQ/',
+      isModal: true
     },
     { 
       title: 'Magazine Previews 2', 
@@ -121,7 +205,9 @@ const ARTWORKS_GREEN = {
         '/assets/artworks/green/spec-mag-preview-2-2.png',
         '/assets/artworks/green/spec-mag-preview-2-3.png',
         '/assets/artworks/green/spec-mag-preview-2-4.png'
-      ] 
+      ],
+      link: 'https://www.facebook.com/share/p/18d4RxBKWz/',
+      isModal: true
     },
     { 
       title: 'Magazine Previews 1', 
@@ -132,7 +218,9 @@ const ARTWORKS_GREEN = {
         '/assets/artworks/green/spec-mag-preview-1-2.png',
         '/assets/artworks/green/spec-mag-preview-1-3.png',
         '/assets/artworks/green/spec-mag-preview-1-4.png'
-      ] 
+      ],
+      link: 'https://www.facebook.com/share/p/18fx1stYsr/',
+      isModal: true
     },
     { 
       title: '#Ecologica', 
@@ -141,19 +229,23 @@ const ARTWORKS_GREEN = {
       images: [
         '/assets/artworks/green/spec-ecologica-1.png',
         '/assets/artworks/green/spec-ecologica-2.png'
-      ] 
+      ],
+      link: 'https://www.facebook.com/share/p/1Co2Mc7htc/',
+      isModal: true
     },
     { 
       title: '#resubSCRIBE', 
       type: 'The Spectrum - Branding', 
       icon: LayoutTemplate, 
-      image: '/assets/artworks/green/spec-resubscribe.png' 
+      image: '/assets/artworks/green/spec-resubscribe.png',
+      link: 'https://www.facebook.com/share/p/18gEQxAGK5/'
     },
     { 
       title: 'SOA 2025 Highlights', 
       type: 'The Spectrum - News Graphics', 
       icon: LayoutTemplate, 
-      image: '/assets/artworks/green/spec-soa-2025.png' 
+      image: '/assets/artworks/green/spec-soa-2025.png',
+      link: 'https://www.facebook.com/share/p/1EUewYSKBE/'
     },
     { 
       title: 'SONA 2025', 
@@ -164,59 +256,66 @@ const ARTWORKS_GREEN = {
         '/assets/artworks/green/spec-sona-2025-2.png',
         '/assets/artworks/green/spec-sona-2025-3.png',
         '/assets/artworks/green/spec-sona-2025-4.png'
-      ] 
+      ],
+      link: 'https://www.facebook.com/share/p/1BgWQ1vjNj/',
+      isModal: true
     },
     { 
       title: 'Tiempo Muerto', 
       type: 'The Spectrum - Editorial Layout', 
       icon: LayoutTemplate, 
-      image: '/assets/artworks/green/spec-tiempo-muerto.png' 
+      image: '/assets/artworks/green/spec-tiempo-muerto.png',
+      link: 'https://www.facebook.com/share/p/1B8NTAE6Kv/'
     },
     { 
       title: 'Maguindanao Massacre Commemoration', 
       type: 'The Spectrum - Editorial Art', 
       icon: LayoutTemplate, 
-      image: '/assets/artworks/green/spec-maguindanao.png' 
+      image: '/assets/artworks/green/spec-maguindanao.png',
+      link: 'https://www.facebook.com/share/p/18fVm8S9d1/'
     },
     { 
       title: 'Martial Law Commemoration', 
       type: 'The Spectrum - Editorial Art', 
       icon: LayoutTemplate, 
-      image: '/assets/artworks/green/spec-martial-law.png' 
+      image: '/assets/artworks/green/spec-martial-law.png',
+      link: 'https://www.facebook.com/share/p/1CeyA8FhnM/'
     },
     { 
       title: 'Martial Law Anniversary Pubmat', 
       type: 'Publication Material', 
       icon: LayoutTemplate, 
-      image: '/assets/artworks/green/rouen-martial-law.png' 
+      image: '/assets/artworks/green/rouen-martial-law.png',
+      link: 'https://www.facebook.com/share/p/1AximtbiZL/'
     },
     { 
       title: 'Ramadan', 
       type: 'The Spectrum - Social Media', 
       icon: LayoutTemplate, 
-      image: '/assets/artworks/green/spec-ramadan.png' 
+      image: '/assets/artworks/green/spec-ramadan.png',
+      link: 'https://www.facebook.com/share/p/18eZxdaHEK/'
     },
     { 
       title: 'Magazine 2025 Spotify Playlist', 
       type: 'The Spectrum - Cover Art', 
       icon: LayoutTemplate, 
-      image: '/assets/artworks/green/spec-mag-spotify.png' 
+      image: '/assets/artworks/green/spec-mag-spotify.png',
+      link: 'https://www.facebook.com/share/p/1Dp8RTZQy6/'
     },
     { 
-      title: 'Freshmen Walk 2023', 
-      type: 'Event Graphics', 
+      title: 'USG | USPLASH 2023: Apolaki | Freshmen Walk Poster | Layout Artist', 
+      type: 'Graphic Design - Layout Artist', 
       icon: LayoutTemplate, 
-      images: [
-        '/assets/artworks/green/usg-freshmen-walk-1.png',
-        '/assets/artworks/green/usg-freshmen-walk-2.png',
-        '/assets/artworks/green/usg-freshmen-walk-3.png'
-      ] 
+      image: '/assets/artworks/red/usplash/freshmen_walk.jpg',
+      link: 'https://www.facebook.com/100064761363993/posts/689861289849244/#',
+      isModal: true
     },
     { 
       title: 'USPLASH Overall Champion Posting', 
       type: 'Social Media Post', 
       icon: LayoutTemplate, 
-      image: '/assets/artworks/green/usg-usplash-champion.png' 
+      image: '/assets/artworks/green/usg-usplash-champion.png',
+      link: 'https://www.facebook.com/share/p/1BQJJ57i8S/'
     },
     { 
       title: 'USPLASH LIVE RESULTS POSTING TEMPLATES', 
@@ -233,7 +332,8 @@ const ARTWORKS_GREEN = {
       title: 'Music Fest Promotional Poster', 
       type: 'Event Branding', 
       icon: LayoutTemplate, 
-      image: '/assets/artworks/green/usg-music-fest.png' 
+      image: '/assets/artworks/green/usg-music-fest.png',
+      link: 'https://www.facebook.com/share/p/1GmDiVh7bd/'
     },
     { 
       title: 'House of Rouen - House Merch Posting', 
@@ -245,7 +345,9 @@ const ARTWORKS_GREEN = {
         '/assets/artworks/green/rouen-merch-3.png',
         '/assets/artworks/green/rouen-merch-4.png',
         '/assets/artworks/green/rouen-merch-5.png'
-      ] 
+      ],
+      link: 'https://www.facebook.com/share/p/1LXGkmyy1d/',
+      isModal: true
     },
     { 
       title: 'Liceo de La Salle Yearbook 2023', 
@@ -423,6 +525,8 @@ const SectionHeader = ({ title, subtitle, icon, isGreen }) => (
 
 const navLinks = ['home', 'projects', 'artworks', 'certifications', 'about'];
 
+import ArtworkModal from './components/ArtworkModal';
+
 const ThemeLayout = () => {
   const { theme, page } = useParams();
   const isGreen = theme === 'adrian';
@@ -430,6 +534,9 @@ const ThemeLayout = () => {
   const location = useLocation();
   const [showOpening, setShowOpening] = useState(true);
   const [isSwitchOn, setIsSwitchOn] = useState(isGreen);
+  const [selectedArt, setSelectedArt] = useState(null);
+  const [selectedArtIndex, setSelectedArtIndex] = useState(null);
+  const [selectedArtCategory, setSelectedArtCategory] = useState(null);
 
   const currentPage = useMemo(() => {
     return navLinks.includes(page) ? page : 'home';
@@ -463,7 +570,8 @@ const ThemeLayout = () => {
   const ORGS_DATA = isGreen ? ORGS_GREEN : (ORGS_RED || null);
 
   return (
-    <SmoothScroll>
+    <>
+      <SmoothScroll>
       <div className={`min-h-screen bg-white text-[#121212] flex flex-col relative overflow-x-hidden ${getThemeSelection()} selection:text-white transition-colors duration-1000 ${isGreen ? 'theme-green' : ''}`}>
         <style>{`
           * { font-family: 'Plus Jakarta Sans', sans-serif; }
@@ -520,7 +628,21 @@ const ThemeLayout = () => {
           <main className="flex-grow relative z-10 pt-32">
             <AnimatePresence mode="wait">
               {currentPage === 'home' && (
-                <HomeView key={`home-${isGreen}`} setActiveTab={setActiveTab} PROJECTS={PROJECTS_DATA} ARTWORKS={ARTWORKS_DATA} CERTS={CERTS_DATA} ProjectCard={(props) => <ProjectCard {...props} isGreen={isGreen} />} CertCard={(props) => <CertCard {...props} isGreen={isGreen} />} isSwitchOn={isGreen} />
+                <HomeView 
+                  key={`home-${isGreen}`} 
+                  setActiveTab={setActiveTab} 
+                  PROJECTS={PROJECTS_DATA} 
+                  ARTWORKS={ARTWORKS_DATA} 
+                  CERTS={CERTS_DATA} 
+                  ProjectCard={(props) => <ProjectCard {...props} isGreen={isGreen} />} 
+                  CertCard={(props) => <CertCard {...props} isGreen={isGreen} />} 
+                  isSwitchOn={isGreen} 
+                  onOpenModal={(art, i, cat) => {
+                    setSelectedArt(art);
+                    setSelectedArtIndex(i);
+                    setSelectedArtCategory(cat);
+                  }}
+                />
               )}
               {currentPage === 'projects' && (
                 <ProjectsView key={`projects-${isGreen}`} PROJECTS={PROJECTS_DATA} SectionHeader={(props) => <SectionHeader {...props} isGreen={isGreen} />} ProjectCard={(props) => <ProjectCard {...props} isGreen={isGreen} />} isSwitchOn={isGreen} />
@@ -529,7 +651,17 @@ const ThemeLayout = () => {
                 <AboutView key={`about-${isGreen}`} SectionHeader={(props) => <SectionHeader {...props} isGreen={isGreen} />} GlassCard={GlassCard} isSwitchOn={isGreen} EDUCATION={EDUCATION_DATA} ORGS={ORGS_DATA} />
               )}
               {currentPage === 'artworks' && (
-                <ArtworksView key={`artworks-${isGreen}`} ARTWORKS={ARTWORKS_DATA} SectionHeader={(props) => <SectionHeader {...props} isGreen={isGreen} />} isSwitchOn={isGreen} />
+                <ArtworksView 
+                  key={`artworks-${isGreen}`} 
+                  ARTWORKS={ARTWORKS_DATA} 
+                  SectionHeader={(props) => <SectionHeader {...props} isGreen={isGreen} />} 
+                  isSwitchOn={isGreen} 
+                  onOpenModal={(art, i, cat) => {
+                    setSelectedArt(art);
+                    setSelectedArtIndex(i);
+                    setSelectedArtCategory(cat);
+                  }}
+                />
               )}
               {currentPage === 'certifications' && (
                 <motion.div 
@@ -562,6 +694,19 @@ const ThemeLayout = () => {
         </div>
       </div>
     </SmoothScroll>
+    <AnimatePresence>
+      {selectedArt && (
+        <ArtworkModal 
+          art={selectedArt} 
+          isOpen={true} 
+          onClose={() => setSelectedArt(null)}
+          isSwitchOn={isSwitchOn}
+          activeCategory={selectedArtCategory}
+          id={`artwork-${selectedArtCategory?.replace(/\s+/g, '-')}-${selectedArtIndex}`}
+        />
+      )}
+    </AnimatePresence>
+  </>
   );
 };
 

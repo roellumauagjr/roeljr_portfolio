@@ -2,7 +2,28 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Camera, Video, LayoutTemplate, ChevronLeft, ChevronRight } from 'lucide-react';
 
-const ArtworkCard = ({ art, i, isSwitchOn, activeCategory }) => {
+const cardVariants = {
+  hidden: { opacity: 0, scale: 0.9, y: 30 },
+  visible: (i) => ({
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 300,
+      damping: 30,
+      delay: i * 0.03
+    }
+  }),
+  exit: { 
+    opacity: 0, 
+    scale: 0.9, 
+    y: 20,
+    transition: { duration: 0.2 }
+  }
+};
+
+const ArtworkCard = ({ art, i, isSwitchOn, activeCategory, onOpenModal }) => {
   const Icon = art.icon;
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const hasMultipleImages = art.images && art.images.length > 1;
@@ -20,20 +41,21 @@ const ArtworkCard = ({ art, i, isSwitchOn, activeCategory }) => {
   return (
     <motion.div
       key={`${art.title}-${activeCategory}`}
-      initial={{ opacity: 0, scale: 0.8, y: 50 }}
-      animate={{ opacity: 1, scale: 1, y: 0 }}
-      exit={{ opacity: 0, scale: 0.8, y: 50 }}
-      transition={{ 
-        type: "spring", 
-        stiffness: 260, 
-        damping: 20,
-        delay: i * 0.05
-      }}
-      className="break-inside-avoid mb-8"
+      variants={cardVariants}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      custom={i}
+      className="break-inside-avoid mb-8 w-full"
     >
-      <div 
-        onClick={() => art.link && window.open(art.link, '_blank')}
-        className={`group relative flex flex-col rounded-[2rem] overflow-hidden border-2 ${isSwitchOn ? 'border-green-600/20 shadow-[0_8px_30px_rgba(34,197,94,0.1)] hover:border-green-600 hover:shadow-[0_30px_60px_rgba(34,197,94,0.25)]' : 'border-red-600/20 shadow-[0_8px_30px_rgba(220,38,38,0.1)] hover:border-red-600 hover:shadow-[0_30px_60px_rgba(220,38,38,0.25)]'} hover:-translate-y-2 transition-all duration-700 cursor-pointer`}
+      <motion.div 
+        onClick={() => {
+          onOpenModal(art);
+        }}
+        whileHover={{ y: -8, transition: { duration: 0.3 } }}
+        whileTap={{ scale: 0.98 }}
+        layoutId={`artwork-frame-${activeCategory.replace(/\s+/g, '-')}-${i}`}
+        className={`group relative flex flex-col rounded-[2rem] overflow-hidden border-2 ${isSwitchOn ? 'border-green-600/20 shadow-[0_8px_30px_rgba(34,197,94,0.1)] hover:border-green-600 hover:shadow-[0_30px_60px_rgba(34,197,94,0.25)]' : 'border-red-600/20 shadow-[0_8px_30px_rgba(220,38,38,0.1)] hover:border-red-600 hover:shadow-[0_30px_60px_rgba(220,38,38,0.25)]'} cursor-pointer bg-[#121212]`}
       >
         {/* Image area */}
         <div className="relative w-full overflow-hidden bg-[#121212]/5 flex-shrink-0">
@@ -46,6 +68,7 @@ const ArtworkCard = ({ art, i, isSwitchOn, activeCategory }) => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.4 }}
+              decoding="async"
               className="w-full h-auto object-contain transition-transform duration-1000 group-hover:scale-105"
             />
           </AnimatePresence>
@@ -92,15 +115,14 @@ const ArtworkCard = ({ art, i, isSwitchOn, activeCategory }) => {
             <Icon size={32} />
           </div>
         </div>
-      </div>
+      </motion.div>
     </motion.div>
   );
 };
 
-const ArtworksView = ({ ARTWORKS, SectionHeader, isSwitchOn }) => {
+const ArtworksView = ({ ARTWORKS, SectionHeader, isSwitchOn, onOpenModal }) => {
   const categories = isSwitchOn ? ['GRAPHIC DESIGN'] : ['PHOTOS', 'VIDEOS', 'GRAPHIC DESIGN'];
   const [activeCategory, setActiveCategory] = useState(isSwitchOn ? 'GRAPHIC DESIGN' : 'PHOTOS');
-
   useEffect(() => {
     setActiveCategory(isSwitchOn ? 'GRAPHIC DESIGN' : 'PHOTOS');
   }, [isSwitchOn]);
@@ -113,6 +135,16 @@ const ArtworksView = ({ ARTWORKS, SectionHeader, isSwitchOn }) => {
       default: return null;
     }
   };
+
+  // Memoize columns to prevent re-filtering during animations
+  const columns = React.useMemo(() => {
+    const items = ARTWORKS[activeCategory] || [];
+    return [
+      items.filter((_, i) => i % 3 === 0),
+      items.filter((_, i) => i % 3 === 1),
+      items.filter((_, i) => i % 3 === 2)
+    ];
+  }, [activeCategory, ARTWORKS]);
 
   return (
     <motion.div 
@@ -153,23 +185,32 @@ const ArtworksView = ({ ARTWORKS, SectionHeader, isSwitchOn }) => {
         ))}
       </motion.div>
 
-      {/* Gallery Grid - Masonry Layout */}
-      <div className="columns-1 md:columns-2 lg:columns-3 gap-8">
-        <AnimatePresence mode="wait">
-          <motion.div 
-            key={activeCategory + isSwitchOn}
-            className="contents"
-          >
-            {ARTWORKS[activeCategory]?.map((art, i) => (
-              <ArtworkCard 
-                key={`${activeCategory}-${art.title}`} 
-                art={art} 
-                i={i} 
-                isSwitchOn={isSwitchOn} 
-                activeCategory={activeCategory} 
-              />
-            ))}
-          </motion.div>
+      {/* Gallery Grid - Optimized Masonry */}
+      <div className="flex flex-col md:flex-row gap-8 items-start">
+        <AnimatePresence mode="popLayout">
+          {columns.map((columnItems, colIdx) => (
+            <motion.div 
+              key={`${activeCategory}-${colIdx}-${isSwitchOn}`}
+              className="flex-1 flex flex-col gap-8 w-full"
+            >
+              {columnItems.map((art) => {
+                // Find original index for layoutId consistency
+                const originalIndex = (ARTWORKS[activeCategory] || []).indexOf(art);
+                return (
+                  <ArtworkCard 
+                    key={`${activeCategory}-${art.title}`} 
+                    art={art} 
+                    i={originalIndex} 
+                    isSwitchOn={isSwitchOn} 
+                    activeCategory={activeCategory} 
+                    onOpenModal={(artwork) => {
+                      onOpenModal(artwork, originalIndex, activeCategory);
+                    }}
+                  />
+                );
+              })}
+            </motion.div>
+          ))}
         </AnimatePresence>
       </div>
     </motion.div>

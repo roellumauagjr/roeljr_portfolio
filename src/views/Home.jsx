@@ -6,7 +6,7 @@ import TextReveal from '../components/animation/TextReveal';
 import Magnetic from '../components/animation/Magnetic';
 
 
-const HomeView = ({ setActiveTab, PROJECTS, ARTWORKS, CERTS, ProjectCard, ArtworksView, CertCard, isSwitchOn }) => {
+const HomeView = ({ setActiveTab, PROJECTS, ARTWORKS, CERTS, ProjectCard, ArtworksView, CertCard, isSwitchOn, onOpenModal }) => {
   return (
     <motion.div 
       initial={{ opacity: 0, scale: 0.95, y: 30 }}
@@ -148,14 +148,17 @@ const HomeView = ({ setActiveTab, PROJECTS, ARTWORKS, CERTS, ProjectCard, Artwor
               return (
                 <motion.div 
                   key={i} 
+                  layoutId={`artwork-frame-${art.label.replace(/\s+/g, '-')}-${i}`}
                   initial={{ opacity: 0, scale: 0.9, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ type: "spring", stiffness: 200, damping: 20, delay: i * 0.1 }}
                 >
-                  <div 
-                    onClick={() => art.link && window.open(art.link, '_blank')}
-                    className={`group relative flex flex-col rounded-[1.5rem] overflow-hidden border-2 ${isSwitchOn ? 'border-green-600 shadow-[0_8px_30px_rgba(34,197,94,0.15)] hover:shadow-[0_20px_50px_rgba(34,197,94,0.3)]' : 'border-red-600 shadow-[0_8px_30px_rgba(220,38,38,0.15)] hover:shadow-[0_20px_50px_rgba(220,38,38,0.3)]'} hover:-translate-y-2 transition-all duration-500 cursor-pointer`}
+                  <motion.div 
+                    onClick={() => onOpenModal(art, i, art.label)}
+                    whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                    whileTap={{ scale: 0.98 }}
+                    className={`group relative flex flex-col rounded-[1.5rem] overflow-hidden border-2 ${isSwitchOn ? 'border-green-600 shadow-[0_8px_30px_rgba(34,197,94,0.15)] hover:shadow-[0_20px_50px_rgba(34,197,94,0.3)]' : 'border-red-600 shadow-[0_8px_30px_rgba(220,38,38,0.15)] hover:shadow-[0_20px_50px_rgba(220,38,38,0.3)]'} cursor-pointer`}
                   >
                     {/* Image area */}
                     <div className="relative aspect-video w-full overflow-hidden bg-[#121212]/10">
@@ -182,7 +185,7 @@ const HomeView = ({ setActiveTab, PROJECTS, ARTWORKS, CERTS, ProjectCard, Artwor
                         <Icon size={28} />
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
                 </motion.div>
               );
             })}
